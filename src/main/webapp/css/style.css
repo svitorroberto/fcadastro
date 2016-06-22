@@ -1,0 +1,46 @@
+@CHARSET "ISO-8859-1";
+
+body{
+	width:100%;
+	margin: 1% 0 0 0;
+}
+img{
+	
+}
+#logo{
+	width: 420px;
+	margin:0 auto;
+}
+#todo{
+	width: 760px;
+	margin:0 auto;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	border: 1px solid #313246;
+}
+#todo2{
+	width: 400px;
+	margin:0 auto;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	border: 1px solid #313246;
+}
+h1{
+	color: #313246;
+	text-align: center;
+}
+#todo a{
+    font-size: 36px;
+    margin-left: 684px;
+}
+#j_idt8\3a j_idt24{
+	margin-left: 380px;
+}
+#j_idt4{
+	width: 383px;
+    height: 125px;
+    margin: 0 auto;
+    padding: 6px;
+}

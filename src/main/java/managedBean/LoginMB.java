@@ -7,6 +7,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 
 import dao.ClienteDaoImpl;
 import model.Cliente;
@@ -25,6 +26,7 @@ public class LoginMB implements Serializable{
 	  //Armazena o usuário logado
 	  private Cliente clienteLogado;
 	  
+	  HttpSession session;
 	  
 	
 	public String doLogin() {
@@ -32,7 +34,7 @@ public class LoginMB implements Serializable{
 		c = clienteDao.getUsuario(c.getCl_cnpj(), c.getSenha());
         if (c == null) {
               c = new Cliente();
-              FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Usuário não encontrado!","Erro no Login!"));
+              FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Empresa não encontrada!","Erro no Login!"));
               FacesContext.getCurrentInstance().validationFailed();
               return "/Login.jsf?faces-redirect=true";
         } else {
@@ -44,6 +46,9 @@ public class LoginMB implements Serializable{
         
   }
 
+	
+	
+
 	//Realiza o logout do usuário logado
 	  public String doLogout() throws IOException{
 	    
@@ -54,7 +59,9 @@ public class LoginMB implements Serializable{
 	         return "/Login.jsf?faces-redirect=true";
 	  }
 	
-	
+	public void teste(){
+		System.out.println(c.getCl_cnpj());
+	}
 	
 	
 

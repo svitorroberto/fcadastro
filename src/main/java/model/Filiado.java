@@ -62,7 +62,8 @@ public class Filiado implements Serializable{
 		return cl_cep;
 	}
 	public void setCl_cep(String cl_cep) {
-		this.cl_cep = cl_cep;
+		String str = cl_cep.replaceAll("\\D+","");
+		this.cl_cep = str;
 	}
 	public String getCl_cidade() {
 		return cl_cidade;
@@ -112,7 +113,8 @@ public class Filiado implements Serializable{
 		return cl_cnpj;
 	}
 	public void setCl_cnpj(String cl_cnpj) {
-		this.cl_cnpj = cl_cnpj;
+		String str = cl_cnpj.replaceAll("\\D+","");
+		this.cl_cnpj = str;
 	}
 	public String getCl_cliente() {
 		return cl_cliente;
@@ -124,7 +126,8 @@ public class Filiado implements Serializable{
 		return cl_cnpjcli;
 	}
 	public void setCl_cnpjcli(String cl_cnpjcli) {
-		this.cl_cnpjcli = cl_cnpjcli;
+		String str = cl_cnpjcli.replaceAll("\\D+","");
+		this.cl_cnpjcli = str;
 	}
 	
 

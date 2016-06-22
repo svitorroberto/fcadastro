@@ -20,7 +20,10 @@ public class Cliente implements Serializable{
 		return cl_cnpj;
 	}
 	public void setCl_cnpj(String cl_cnpj) {
-		this.cl_cnpj = cl_cnpj;
+		String str = cl_cnpj.replaceAll("\\D+","");
+		CNP cnp = new CNP();
+		cnp.tomarDecisao(str);
+		this.cl_cnpj = str;
 	}
 	public String getCl_razao() {
 		return cl_razao;

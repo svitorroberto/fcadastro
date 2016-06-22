@@ -4,23 +4,32 @@
         xmlns:p="http://primefaces.org/ui">
    
   <h:head>
-   
+  	<title>Login Empresa</title>
+  
+   <link rel="icon" type="image/png" href="images/favicon2.png"/>
+	<link rel="StyleSheet" type="text/css" href="css/style.css" media="screen" />
   </h:head>
    
   <h:body>
+  <div id="logo">
+<img src="images/logo.jpg" alt="CEASA-GO" height="142" width="420"/>
+</div>
+  <div id="todo2">
+  <h1>LOGIN</h1>
         <h:form>
-              <p:messages id="messages" />
               <p:panelGrid columns="2">
                     <p:outputLabel for="nomeUsuario" value="CNPJ:" />
-                    <p:inputText id="nomeUsuario" value="#{loginMB.c.cl_cnpj}" />
+                    <p:inputMask id="nomeUsuario" required="true" value="#{loginMB.c.cl_cnpj}" mask="99.999.999/9999-99"/>
                     
                     <p:outputLabel for="senha" value="Senha:" />
                     <p:password id="senha" value="#{loginMB.c.senha}" />
                     
-                    <p:commandButton value="Entrar" icon="ui-icon-star" action="#{loginMB.doLogin}" ajax="false">
+                    <p:commandButton value="Entrar" required="true" icon="ui-icon-star" action="#{loginMB.doLogin}" ajax="false">
                     </p:commandButton>
    
               </p:panelGrid>
+              <p:messages id="messages" />
         </h:form>
+   </div>
   </h:body>
   </html>

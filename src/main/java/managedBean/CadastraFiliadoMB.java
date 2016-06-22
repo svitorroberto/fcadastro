@@ -7,9 +7,9 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.ServletRequest;
-import javax.servlet.http.HttpServletRequest;
 
 import dao.FiliadoDaoImpl;
+import model.CNP;
 import model.Filiado;
 
 @ManagedBean(name="cadastraFiliado")
@@ -22,9 +22,15 @@ public class CadastraFiliadoMB implements Serializable{
 	ServletRequest request;
 	
 	public String criarFiliado(){
-		new FiliadoDaoImpl().inserir(f);
-		f = new Filiado();
-		addMessage("Funcionário Cadastrado com sucesso!");
+		CNP cnp = new CNP();
+		if(cnp.tomarDecisao(f.getCl_cnpj())== false){
+			addMessage("CPF/CNPJ do Funcionário Inválido");
+		}
+		else{
+			new FiliadoDaoImpl().inserir(f);
+			f = new Filiado();
+			addMessage("Funcionário Cadastrado com sucesso!");
+		}
 		return "cnpj";
 		
 	}
@@ -34,6 +40,8 @@ public class CadastraFiliadoMB implements Serializable{
         FacesContext.getCurrentInstance().addMessage(null, message);
     }
 
+	
+	
 	public Filiado getF() {
 		return f;
 	}

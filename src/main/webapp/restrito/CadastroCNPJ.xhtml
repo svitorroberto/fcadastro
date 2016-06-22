@@ -14,11 +14,11 @@
     <meta name="description" content=""/>
     <meta name="author" content=""/>
 
-    <title>Cadastro CPF</title>
+    <title>Cadastro CNPJ</title>
 
-    
-	<link rel="icon" type="image/png" href="../images/favicon2.png"/>
+    <link rel="icon" type="image/png" href="../images/favicon2.png"/>
 	<link rel="StyleSheet" type="text/css" href="../css/style.css" media="screen" />
+
 </h:head>
 
 <h:body>
@@ -26,7 +26,7 @@
 <img src="../images/logo.jpg" alt="CEASA-GO" height="142" width="420"/>
 </div>
 <div id="todo">
-<h1>CADASTRO DE FUNCIONÁRIO COM CPF</h1>
+<h1>CADASTRO DE FUNCIONÁRIO COM CNPJ</h1>
 <h:form>
 <p:commandLink id="nonAjax" actionListener="#{loginMB.doLogout}">
         <h:outputText value="Sair" />
@@ -35,8 +35,8 @@
 <h:form>
 <p:messages autoUpdate="true" />
 	<h:panelGrid columns="2" cellpadding="5">
-        <p:outputLabel for="cl_cnpj" value="CPF:" />
-        <p:inputMask id="cl_cnpj" value="#{cadastraFiliado.f.cl_cnpj}" mask="999.999.999-99" required="true"/>
+        <p:outputLabel for="cl_cnpj" value="CNPJ:" />
+        <p:inputMask id="cl_cnpj" value="#{cadastraFiliado.f.cl_cnpj}" mask="99.999.999/9999-99" required="true"/>
         
         <p:outputLabel for="cl_razao" value="Nome:" />
         <p:inputText id="cl_razao" size="50" value="#{cadastraFiliado.f.cl_razao}" required="true"/>
@@ -73,7 +73,7 @@
         
         <p:outputLabel for="cl_cliente" value="Nome da Empresa:" />
         <p:inputText id="cl_cliente" size="50" value="#{cadastraFiliado.f.cl_cliente}" required="true"/>
-        
+         
         <!-- <p:commandButton value="Cadastrar"  ajax="false" /> -->
         <p:commandButton value="Cadastrar" actionListener="#{cadastraFiliado.criarFiliado}" ajax="false" />
 	</h:panelGrid>

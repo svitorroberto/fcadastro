@@ -11,12 +11,13 @@ import javax.persistence.Table;
 public class Filiado implements Serializable{
 	
 	@Id
+	private String cl_codigo;
 	private String cl_cnpj;
 	private String cl_razao;
 	private String cl_enderec;
 	private String cl_bairro;
 	private String cl_complem;
-	private String cl_num;
+	private String cl_numero;
 	private String cl_cep;
 	private String cl_cidade;
 	private String cl_estado;
@@ -26,8 +27,12 @@ public class Filiado implements Serializable{
 	private String cl_cnpjcli;
 	
 	
-	
-	
+	public String getCl_codigo() {
+		return cl_codigo;
+	}
+	public void setCl_codigo(String cl_codigo) {
+		this.cl_codigo = cl_codigo;
+	}
 	public String getCl_razao() {
 		return cl_razao;
 	}
@@ -52,11 +57,11 @@ public class Filiado implements Serializable{
 	public void setCl_complem(String cl_complem) {
 		this.cl_complem = cl_complem;
 	}
-	public String getCl_num() {
-		return cl_num;
+	public String getCl_numero() {
+		return cl_numero;
 	}
-	public void setCl_num(String cl_num) {
-		this.cl_num = cl_num;
+	public void setCl_numero(String cl_numero) {
+		this.cl_numero = cl_numero;
 	}
 	public String getCl_cep() {
 		return cl_cep;

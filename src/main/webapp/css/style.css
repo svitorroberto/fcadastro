@@ -31,10 +31,20 @@ h1{
 	color: #313246;
 	text-align: center;
 }
-#todo a{
-    font-size: 36px;
-    margin-left: 684px;
+/* LINKS */
+#link1{
+    font-size: 25px;
+    margin-left: 3px;
 }
+#form2\3a link2{
+	font-size: 25px;
+    margin-left: 710px;
+}
+#form2{
+	margin-top: 27px;
+    margin-bottom: 10px;
+}
+/*      */
 #j_idt8\3a j_idt24{
 	margin-left: 380px;
 }
@@ -43,4 +53,7 @@ h1{
     height: 125px;
     margin: 0 auto;
     padding: 6px;
+}
+#j_idt6\3a j_idt7 {
+    margin: 0 auto;
 }

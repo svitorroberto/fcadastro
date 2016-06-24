@@ -30,14 +30,23 @@ public class LoginMB implements Serializable{
 	  
 	
 	public String doLogin() {
-        
-		c = clienteDao.getUsuario(c.getCl_cnpj(), c.getSenha());
+        //PESQUISA SE HÁ ALGUM OBJETO COM A COMBINAÇÃO CNPJ+SENHA
+		c = clienteDao.getUsuario(c.getCl_cnpj(), c.getCl_senha());
         if (c == null) {
               c = new Cliente();
               FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Empresa não encontrada!","Erro no Login!"));
               FacesContext.getCurrentInstance().validationFailed();
+              System.out.println("Empresa não encontrada");
               return "/Login.jsf?faces-redirect=true";
-        } else {
+        } else if(c.getCl_senha()==null){
+        	System.out.println("Senha não cadastrada");
+        	setLoggedIn(true);
+            setClienteLogado(c);
+        	return "/restrito/AlterarSenha.jsf?faces-redirect=true";
+        }
+        
+        else {
+        	System.out.println("Login OK");
         	setLoggedIn(true);
             setClienteLogado(c);
             return "/restrito/Cadastro.jsf?faces-redirect=true";

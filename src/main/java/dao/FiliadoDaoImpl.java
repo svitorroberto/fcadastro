@@ -4,6 +4,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import model.Cliente;
 import model.Filiado;
 
 public class FiliadoDaoImpl implements FiliadoDao{
@@ -16,7 +17,7 @@ public class FiliadoDaoImpl implements FiliadoDao{
 	    }
 		
 		private EntityManager getEntityManager() {
-	        EntityManagerFactory factory = Persistence.createEntityManagerFactory("CadastroCeasa");
+	        EntityManagerFactory factory = Persistence.createEntityManagerFactory("conexaoOracle");
 	        if (entityManager == null) {
 	            entityManager = factory.createEntityManager();
 	        }
@@ -27,7 +28,11 @@ public class FiliadoDaoImpl implements FiliadoDao{
 	public void inserir(Filiado f) {
 		
 		try {
-            entityManager.getTransaction().begin();
+			int codigo = entityManager.createQuery("select max(cl_codigo) from Cliente").getFirstResult();
+			codigo=+1;
+			f.setCl_codigo(Integer.toString(codigo));
+		//	f.setCl_codigo("1400");
+			entityManager.getTransaction().begin();
             entityManager.persist(f);
             entityManager.getTransaction().commit();
         } catch (Exception ex) {

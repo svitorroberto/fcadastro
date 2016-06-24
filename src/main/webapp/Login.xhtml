@@ -22,13 +22,13 @@
                     <p:inputMask id="nomeUsuario" required="true" value="#{loginMB.c.cl_cnpj}" mask="99.999.999/9999-99"/>
                     
                     <p:outputLabel for="senha" value="Senha:" />
-                    <p:password id="senha" value="#{loginMB.c.senha}" />
+                    <p:password id="senha" value="#{loginMB.c.cl_senha}" />
                     
                     <p:commandButton value="Entrar" required="true" icon="ui-icon-star" action="#{loginMB.doLogin}" ajax="false">
                     </p:commandButton>
    
-              </p:panelGrid>
               <p:messages id="messages" />
+              </p:panelGrid>
         </h:form>
    </div>
   </h:body>

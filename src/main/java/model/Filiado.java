@@ -26,6 +26,20 @@ public class Filiado implements Serializable{
 	private String cl_cliente;
 	private String cl_cnpjcli;
 	
+//	private String cl_nasc;
+//	private String cl_naturalidade;
+//	private String cl_nomemae;
+//	private String cl_nomepai;
+//	private String cl_identidade;
+//	private String cl_identidadeorg;
+//	private String cl_carteira;
+//	private String cl_email;
+//	private String cl_vinculo;
+//	private String cl_data_admissao;
+//	private String cl_cargo;
+
+	
+	
 	
 	public String getCl_codigo() {
 		return cl_codigo;

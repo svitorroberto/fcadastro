@@ -43,6 +43,11 @@ public class LoginMB implements Serializable{
         	setLoggedIn(true);
             setClienteLogado(c);
         	return "/restrito/AlterarSenha.jsf?faces-redirect=true";
+        } else if(c.getCl_cnpj()=="99999999999999"){
+        	System.out.println("Login OK");
+        	setLoggedIn(true);
+            setClienteLogado(c);
+            return "/restrito/admin/RestaurarSenha.jsf?faces-redirect=true";
         }
         
         else {

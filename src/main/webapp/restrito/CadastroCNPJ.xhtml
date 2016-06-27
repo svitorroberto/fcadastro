@@ -29,47 +29,63 @@
 <h1>CADASTRO DE FUNCIONÁRIO COM CNPJ</h1>
 <h:form>
 <p:messages autoUpdate="true" />
-	<h:panelGrid columns="2" cellpadding="5">
+	<h:panelGrid columns="3" cellpadding="5">
         <p:outputLabel for="cl_cnpjcli" value="CNPJ Empresa:" />
         <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>
+        <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->
         
         <p:outputLabel for="cl_cliente" value="Nome da Empresa:" />
         <p:inputText id="cl_cliente" size="50" value="#{cadastraFiliado.f.cl_cliente}" required="true"/>
+        <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->
         
         <p:outputLabel for="cl_cnpj" value="CNPJ:" />
         <p:inputMask id="cl_cnpj" value="#{cadastraFiliado.f.cl_cnpj}" mask="99.999.999/9999-99" required="true"/>
+        <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->
+        
+        
         
         <p:outputLabel for="cl_razao" value="Nome:" />
         <p:inputText id="cl_razao" size="50" value="#{cadastraFiliado.f.cl_razao}" required="true"/>
+        <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->
         
         <p:outputLabel for="cl_cep" value="CEP:" />
         <p:inputMask id="cl_cep" value="#{cadastraFiliado.f.cl_cep}" mask="99999-999" required="true"/>
+        <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->
         
         <p:outputLabel for="cl_enderec" value="Endereço" />
         <p:inputText id="cl_enderec" size="50" value="#{cadastraFiliado.f.cl_enderec}" required="true"/>
+        <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->
         
         <p:outputLabel for="cl_bairro" value="Bairro:" />
         <p:inputText id="cl_bairro" size="50" value="#{cadastraFiliado.f.cl_bairro}" required="true"/>
+        <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->
         
         <p:outputLabel for="cl_complem" value="Complemento:" />
         <p:inputText id="cl_complem" size="50" value="#{cadastraFiliado.f.cl_complem}" required="true"/>
+        <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->
         
         <p:outputLabel for="cl_num" value="Número:" />
         <p:inputText id="cl_num" size="50" value="#{cadastraFiliado.f.cl_num}"/>
+        <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->
         
         <p:outputLabel for="cl_cidade" value="Cidade:" />
         <p:inputText id="cl_cidade" size="50" value="#{cadastraFiliado.f.cl_cidade}" required="true"/>
+        <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->
         
         <p:outputLabel for="cl_estado" value="Estado:" />
         <p:inputText id="cl_estado" size="50" value="#{cadastraFiliado.f.cl_estado}" required="true"/>
+        <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->
         
         <p:outputLabel for="cl_pais" value="País:" />
         <p:inputText id="cl_pais" size="50" value="#{cadastraFiliado.f.cl_pais}" required="true"/>
+        <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->
         
         <p:outputLabel for="cl_fone1" value="Fone:" />
         <p:inputText id="cl_fone1" value="#{cadastraFiliado.f.cl_fone1}" required="true"/>
+        <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->
           
-         
+          
+        <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  --> 
         <!-- <p:commandButton value="Cadastrar"  ajax="false" /> -->
         <p:commandButton value="Cadastrar" actionListener="#{cadastraFiliado.criarFiliado}" ajax="false" />
 	</h:panelGrid>

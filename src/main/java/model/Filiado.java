@@ -26,17 +26,18 @@ public class Filiado implements Serializable{
 	private String cl_cliente;
 	private String cl_cnpjcli;
 	
-//	private String cl_nasc;
-//	private String cl_naturalidade;
-//	private String cl_nomemae;
-//	private String cl_nomepai;
-//	private String cl_identidade;
-//	private String cl_identidadeorg;
+	private String cl_dtnascimento;
+	private String cl_naturalidade;
+	private String cl_materno;
+	private String cl_paterno;
+	private String cl_rg;
+	private String cl_rgemissor;
+	private String cl_email;
+	private String cl_codgru;
+	private String cl_dtadmissao;
+	private String cl_cargo;
+	
 //	private String cl_carteira;
-//	private String cl_email;
-//	private String cl_vinculo;
-//	private String cl_data_admissao;
-//	private String cl_cargo;
 
 	
 	
@@ -147,6 +148,66 @@ public class Filiado implements Serializable{
 	public void setCl_cnpjcli(String cl_cnpjcli) {
 		String str = cl_cnpjcli.replaceAll("\\D+","");
 		this.cl_cnpjcli = str;
+	}
+	public String getCl_dtnascimento() {
+		return cl_dtnascimento;
+	}
+	public void setCl_dtnascimento(String cl_dtnascimento) {
+		this.cl_dtnascimento = cl_dtnascimento;
+	}
+	public String getCl_naturalidade() {
+		return cl_naturalidade;
+	}
+	public void setCl_naturalidade(String cl_naturalidade) {
+		this.cl_naturalidade = cl_naturalidade;
+	}
+	public String getCl_materno() {
+		return cl_materno;
+	}
+	public void setCl_materno(String cl_materno) {
+		this.cl_materno = cl_materno;
+	}
+	public String getCl_paterno() {
+		return cl_paterno;
+	}
+	public void setCl_paterno(String cl_paterno) {
+		this.cl_paterno = cl_paterno;
+	}
+	public String getCl_rg() {
+		return cl_rg;
+	}
+	public void setCl_rg(String cl_rg) {
+		this.cl_rg = cl_rg;
+	}
+	public String getCl_rgemissor() {
+		return cl_rgemissor;
+	}
+	public void setCl_rgemissor(String cl_rgemissor) {
+		this.cl_rgemissor = cl_rgemissor;
+	}
+	public String getCl_email() {
+		return cl_email;
+	}
+	public void setCl_email(String cl_email) {
+		this.cl_email = cl_email;
+	}
+	public String getCl_codgru() {
+		return cl_codgru;
+	}
+	public void setCl_codgru(String cl_codgru) {
+		this.cl_codgru = cl_codgru;
+	}
+	public String getCl_dtadmissao() {
+		return cl_dtadmissao;
+	}
+	public void setCl_dtadmissao(String cl_dtadmissao) {
+		this.cl_dtadmissao = cl_dtadmissao;
+	}
+	public String getCl_cargo() {
+		return cl_cargo;
+	}
+	public void setCl_cargo(String cl_cargo) {
+		this.cl_cargo = cl_cargo;
 	}
 	
 

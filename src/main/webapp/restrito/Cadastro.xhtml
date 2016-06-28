@@ -46,51 +46,45 @@
         <p:inputText id="cl_razao" size="50" value="#{cadastraFiliado.f.cl_razao}" required="true"/>
         <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->
         
-        <p:outputLabel for="cl_data_nasc" value="Data de Nascimento:" />
-        <p:inputMask id="cl_data_nasc"  mask="99/99/9999" required="true"/>
+        <p:outputLabel for="cl_dtnascimento" value="Data de Nascimento:" />
+        <p:inputMask id="cl_dtnascimento"  mask="99/99/9999" required="true"/>
         <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->
         
         <p:outputLabel for="cl_naturalidade" value="Naturalidade:" />
         <p:inputText id="cl_naturalidade" size="50"  required="true"/>
         <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->
         
-        <p:outputLabel for="cl_nomemae" value="Nome da Mãe:" />
-        <p:inputText id="cl_nomemae" size="50"  required="true"/>
+        <p:outputLabel for="cl_materno" value="Nome da Mãe:" />
+        <p:inputText id="cl_materno" size="50"  required="true"/>
         <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->
         
-        <p:outputLabel for="cl_nomepai" value="Nome do Pai:" />
-        <p:inputText id="cl_nomepai" size="50"/>
+        <p:outputLabel for="cl_paterno" value="Nome do Pai:" />
+        <p:inputText id="cl_paterno" size="50"/>
         <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->
         
-        <p:outputLabel for="cl_identidade" value="Nº Identidade" />
-        <p:inputText id="cl_identidade" >
+        <p:outputLabel for="cl_rg" value="Nº Identidade" />
+        <p:inputText id="cl_rg" >
                 <p:keyFilter regEx="/[\d\-]/"/>
         </p:inputText>
         <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->
         
-        <p:outputLabel for="cl_identidadeorg" value="Órgão emissor" />
-        <p:inputText id="cl_identidadeorg" />
+        <p:outputLabel for="cl_rgemissor" value="Órgão emissor" />
+        <p:inputText id="cl_rgemissor" />
         <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->
         
-        <p:outputLabel for="cl_carteira" value="Número Carteira de Trabalho" />
-        <p:inputText id="cl_carteira" >
-        	<p:keyFilter regEx="/[\d\-]/"/>
-        </p:inputText>
-        <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->
-        
-        <p:outputLabel for="cl_vinculo" value="Vículo Jurídico" />
-        <p:selectOneMenu id="cl_vinculo" style="width:125px">
+        <p:outputLabel for="cl_codgru" value="Vículo Jurídico" />
+        <p:selectOneMenu id="cl_codgru" style="width:125px">
         	<f:selectItem itemLabel="Escolha Um" itemValue="" />
-            <f:selectItem itemLabel="Servidor" itemValue="SERVIDOR" />
-            <f:selectItem itemLabel="Empregado" itemValue="EMPREGADO" />
-            <f:selectItem itemLabel="Carregador" itemValue="CARREGADOR" />
-            <f:selectItem itemLabel="Permissionário" itemValue="PERMISSIONARIO" />
-            <f:selectItem itemLabel="Concessionário" itemValue="CONCESSIONARIO" />
+            <f:selectItem itemLabel="Servidor" itemValue="1" />
+            <f:selectItem itemLabel="Empregado" itemValue="2" />
+            <f:selectItem itemLabel="Carregador" itemValue="3" />
+            <f:selectItem itemLabel="Permissionário" itemValue="4" />
+            <f:selectItem itemLabel="Concessionário" itemValue="5" />
         </p:selectOneMenu>
         <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->
         
-        <p:outputLabel for="cl_data_admissao" value="Data de Admissão:" />
-        <p:inputMask id="cl_data_admissao"  mask="99/99/9999" required="true"/>
+        <p:outputLabel for="cl_dtadmissao" value="Data de Admissão:" />
+        <p:inputMask id="cl_dtadmissao"  mask="99/99/9999" required="true"/>
         <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->
         
         <p:outputLabel for="cl_cargo" value="Cargo na Empresa" />

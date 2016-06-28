@@ -1,4 +1,4 @@
-package managedBean;
+
 
 import java.io.IOException;
 import java.io.Serializable;
@@ -72,6 +72,11 @@ public class LoginMB implements Serializable{
 	   //    addInfoMessage("Logout realizado com sucesso !");
 	         return "/Login.jsf?faces-redirect=true";
 	  }
+	
+	public void teste(){
+		System.out.println(c.getCl_cnpj());
+	}
+	
 	
 
 	public Cliente getC() {

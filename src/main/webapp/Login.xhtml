@@ -24,7 +24,7 @@
                     <p:outputLabel for="senha" value="Senha:" />
                     <p:password id="senha" value="#{loginMB.c.cl_senha}" />
                     
-                    <p:commandButton value="Entrar" required="true" icon="ui-icon-star" action="#{loginMB.doLogin}" ajax="false">
+                    <p:commandButton value="Entrar" required="true" icon="ui-icon-star" action="#{loginMB.doLogin()}" ajax="false">
                     </p:commandButton>
    
               <p:messages id="messages" />

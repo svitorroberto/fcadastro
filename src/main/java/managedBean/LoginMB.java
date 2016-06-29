@@ -29,12 +29,12 @@ public class LoginMB implements Serializable{
 	  HttpSession session;
 	  
 	
-	public String doLogin() {
+	public String doLogin() throws IOException {
         //PESQUISA SE HÁ ALGUM OBJETO COM A COMBINAÇÃO CNPJ+SENHA
 		c = clienteDao.getUsuario(c.getCl_cnpj(), c.getCl_senha());
         if (c == null) {
               c = new Cliente();
-              FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Empresa não encontrada!","Erro no Login!"));
+              FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Empresa não encontrada ou senha incorreta","Erro no Login!"));
               FacesContext.getCurrentInstance().validationFailed();
               System.out.println("Empresa não encontrada");
               return "/Login.jsf?faces-redirect=true";
@@ -42,18 +42,20 @@ public class LoginMB implements Serializable{
         	System.out.println("Senha não cadastrada");
         	setLoggedIn(true);
             setClienteLogado(c);
+            FacesContext.getCurrentInstance().getExternalContext().redirect("/webCadastro/restrito/AlterarSenha.jsf");
         	return "/restrito/AlterarSenha.jsf?faces-redirect=true";
-        } else if(c.getCl_cnpj()=="99999999999999"){
-        	System.out.println("Login OK");
+        } else if(c.getCl_cnpj().equals("99999999999999")){
+        	System.out.println("Login MASTER OK");
         	setLoggedIn(true);
             setClienteLogado(c);
+            FacesContext.getCurrentInstance().getExternalContext().redirect("/webCadastro/restrito/admin/RestaurarSenha.jsf");
             return "/restrito/admin/RestaurarSenha.jsf?faces-redirect=true";
         }
-        
         else {
         	System.out.println("Login OK");
         	setLoggedIn(true);
             setClienteLogado(c);
+            FacesContext.getCurrentInstance().getExternalContext().redirect("/webCadastro/restrito/Cadastro.jsf");
             return "/restrito/Cadastro.jsf?faces-redirect=true";
         }
         

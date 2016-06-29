@@ -210,5 +210,10 @@ public class Filiado implements Serializable{
 		this.cl_cargo = cl_cargo;
 	}
 	
+	@Override
+	public String toString() {
+		String s = getCl_dtadmissao()+" "+getCl_codigo()+" "+getCl_rgemissor()+" "+getCl_dtnascimento();
+		return s;
+	}
 
 }

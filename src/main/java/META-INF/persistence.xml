@@ -4,12 +4,16 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence 
 http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
-	<persistence-unit name="CadastroCeasa">
-	
+		
+	<persistence-unit name="conexaoOracle">
 	<provider>org.hibernate.ejb.HibernatePersistence</provider>
 	<class>model.Cliente</class>
 	<class>model.Filiado</class>
 	<class>model.Cep</class>
+	<class>model.Cidade</class>
+	<class>model.Estado</class>
+	<class>model.Pais</class>
+<!--
 	<properties>
    		<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
 		<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
@@ -17,24 +21,20 @@ http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
 		<property name="hibernate.connection.password" value="aluno"/>
 		<property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/fcadastro"/>
 		<property name="connection_pool_size" value="1"/>
-		<property name="hbm2ddl.auto" value="update"/>
 		<property name="show_sql" value="true"/>         
 	</properties>
 	</persistence-unit>
+	 -->
 
-	<persistence-unit name="conexaoOracle">
 	
-	<provider>org.hibernate.ejb.HibernatePersistence</provider>
-<!-- 	<class>model.Cliente</class>
-	<class>model.Filiado</class>
- -->	<properties>
+	<properties>
    		<property name="hibernate.dialect" value="org.hibernate.dialect.OracleDialect"/>
 		<property name="hibernate.connection.driver_class" value="oracle.jdbc.driver.OracleDriver"/>
 		<property name="hibernate.connection.username" value="UNISYS"/>
 		<property name="hibernate.connection.password" value="unisys"/>
 		<property name="hibernate.connection.url" value="jdbc:oracle:thin:@10.27.0.250:1521:dadoundg"/>
 		<property name="connection_pool_size" value="1"/>
-		<!--  <property name="hbm2ddl.auto" value="update"/>-->
+		<property name="hbm2ddl.auto" value="update"/>
 		<property name="show_sql" value="true"/>         
 	</properties>
 	</persistence-unit>

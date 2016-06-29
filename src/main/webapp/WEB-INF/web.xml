@@ -7,7 +7,7 @@
 <!--  login filter -->
   <filter>
       <filter-name>LoginFilter</filter-name>
-      <filter-class>LoginFilter</filter-class>   
+      <filter-class>session.LoginFilter</filter-class>   
   </filter>
   <filter-mapping>
       <filter-name>LoginFilter</filter-name>

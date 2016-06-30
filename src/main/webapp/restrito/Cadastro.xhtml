@@ -45,23 +45,33 @@
         <p:commandButton  type="button" icon="ui-icon-search" onclick="PF('localizar').show();" />
         
         <p:outputLabel for="cl_enderec" value="Endereço" />
-        <p:inputText id="cl_enderec" size="50" value="#{cadastraFiliado.f.cl_enderec}" required="true" style="text-transform: uppercase"/>
+        <p:inputText id="cl_enderec" size="50" value="#{cadastraFiliado.f.cl_enderec}" required="true" converter="toUpperCaseConverter">
+        	<f:ajax event="blur" render="@this" />
+		</p:inputText>
         <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->
         
         <p:outputLabel for="cl_bairro" value="Bairro:" />
-        <p:inputText id="cl_bairro" size="50" value="#{cadastraFiliado.f.cl_bairro}" required="true" style="text-transform: uppercase"/>
+        <p:inputText id="cl_bairro" size="50" value="#{cadastraFiliado.f.cl_bairro}" required="true" converter="toUpperCaseConverter">
+        	<f:ajax event="blur" render="@this" />
+		</p:inputText>
         <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->
         
         <p:outputLabel for="cl_complem" value="Complemento:" />
-        <p:inputText id="cl_complem" size="50" value="#{cadastraFiliado.f.cl_complem}" style="text-transform: uppercase"/>
+        <p:inputText id="cl_complem" size="50" value="#{cadastraFiliado.f.cl_complem}" converter="toUpperCaseConverter">
+        	<f:ajax event="blur" render="@this" />
+		</p:inputText>
         <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->
         
         <p:outputLabel for="cl_num" value="Número:" />
-        <p:inputText id="cl_num" size="50" value="#{cadastraFiliado.f.cl_numero}" style="text-transform: uppercase"/>
+        <p:inputText id="cl_num" size="50" value="#{cadastraFiliado.f.cl_numero}"  converter="toUpperCaseConverter">
+        	<f:ajax event="blur" render="@this" />
+		</p:inputText>
         <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->
         
         <p:outputLabel for="cl_cidade" value="Cidade:" />
-        <p:inputText id="cl_cidade" size="50" value="#{cadastraFiliado.f.cl_cidade}" required="true" style="text-transform: uppercase"/>
+        <p:inputText id="cl_cidade" size="50" value="#{cadastraFiliado.f.cl_cidade}" required="true" converter="toUpperCaseConverter">
+        	<f:ajax event="blur" render="@this" />
+		</p:inputText>
         <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->
         
         <p:outputLabel for="cl_estado" value="Estado:" />
@@ -69,7 +79,9 @@
    <!--     <p:inputText id="cl_estado" size="50" value="#{cadastraFiliado.f.cl_estado}" required="true" style="text-transform: uppercase"/> -->
         
         <p:outputLabel for="cl_pais" value="País:" />
-        <p:inputText id="cl_pais" size="50" value="#{cadastraFiliado.f.cl_pais}" required="true" style="text-transform: uppercase"/>
+        <p:inputText id="cl_pais" size="50" value="#{cadastraFiliado.f.cl_pais}" required="true" converter="toUpperCaseConverter">
+        	<f:ajax event="blur" render="@this" />
+		</p:inputText>
         <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->
 		</div>
         
@@ -78,9 +90,9 @@
         <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->
         
         <p:outputLabel for="cl_razao" value="Nome:" />
-        <p:inputText id="cl_razao" size="50" value="#{cadastraFiliado.f.cl_razao}" required="true" style="text-transform: uppercase">
-        	<p:keyFilter regEx="/[A-Z]/i"/>
-        </p:inputText>
+        <p:inputText id="cl_razao" size="50" value="#{cadastraFiliado.f.cl_razao}" required="true" converter="toUpperCaseConverter">
+        	<f:ajax event="blur" render="@this" />
+		</p:inputText>
         <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->
         
         <p:outputLabel for="cl_sexo" value="Sexo" />
@@ -95,17 +107,21 @@
         <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->
         
         <p:outputLabel for="cl_naturalidade" value="Naturalidade:" />
-        <p:inputText id="cl_naturalidade" size="50" value="#{cadastraFiliado.f.cl_naturalidade}" required="true" style="text-transform: uppercase">
-        	<p:keyFilter regEx="/[A-Z]/i"/>
-        </p:inputText>
+        <p:inputText id="cl_naturalidade" size="50" value="#{cadastraFiliado.f.cl_naturalidade}" required="true" converter="toUpperCaseConverter">
+        	<f:ajax event="blur" render="@this" />
+		</p:inputText>
         <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->
         
         <p:outputLabel for="cl_materno" value="Nome da Mãe:" />
-        <p:inputText id="cl_materno" value="#{cadastraFiliado.f.cl_materno}" size="50"  required="true" style="text-transform: uppercase"/>
+        <p:inputText id="cl_materno" value="#{cadastraFiliado.f.cl_materno}" size="50"  required="true" converter="toUpperCaseConverter">
+        	<f:ajax event="blur" render="@this" />
+		</p:inputText>
         <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->
         
         <p:outputLabel for="cl_paterno" value="Nome do Pai:" />
-        <p:inputText id="cl_paterno" value="#{cadastraFiliado.f.cl_paterno}" size="50" style="text-transform: uppercase"/>
+        <p:inputText id="cl_paterno" value="#{cadastraFiliado.f.cl_paterno}" size="50" converter="toUpperCaseConverter">
+        	<f:ajax event="blur" render="@this" />
+		</p:inputText>
         <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->
         
         <p:outputLabel for="cl_rg" value="Nº Identidade" />
@@ -115,7 +131,9 @@
         <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->
         
         <p:outputLabel for="cl_rgemissor" value="Órgão emissor" />
-        <p:inputText id="cl_rgemissor" value="#{cadastraFiliado.f.cl_rgemissor}"  required="true" style="text-transform: uppercase"/>
+        <p:inputText id="cl_rgemissor" value="#{cadastraFiliado.f.cl_rgemissor}"  required="true" converter="toUpperCaseConverter">
+        	<f:ajax event="blur" render="@this" />
+		</p:inputText>
         <p:watermark for="cl_rgemissor" value="SSP-GO" id="watermark" />
         
         <p:outputLabel for="cl_codgru" value="Vículo Jurídico" />
@@ -142,14 +160,13 @@
         
 		
         <p:outputLabel for="cl_fone1" value="Fone:" />
-        <p:inputText id="cl_fone1" value="#{cadastraFiliado.f.cl_fone1}" required="true">
+        <p:inputText id="cl_fone1" value="#{cadastraFiliado.f.cl_fone1}" required="true" size="11">
         	<p:keyFilter regEx="/[\d\-]/"/>
         </p:inputText>
         <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->
         
 		<p:outputLabel for="cl_email" value="E-mail" />
         <p:inputText id="cl_email"  value="#{cadastraFiliado.f.cl_email}" required="true" style="text-transform: uppercase">
-        	<p:keyFilter regEx="/[a-z0-9_\.\-@]/i"/>
         </p:inputText>
         
         <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->

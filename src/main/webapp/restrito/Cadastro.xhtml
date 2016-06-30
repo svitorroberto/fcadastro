@@ -152,6 +152,7 @@
         
         <p:outputLabel for="cl_cargo" value="Cargo na Empresa" />
         <p:selectOneMenu id="cl_cargo" value="#{cadastraFiliado.f.cl_cargo}" style="width:200px">
+        		<f:selectItem itemLabel="" itemValue="" />
             	<f:selectItems value="#{cadastraFiliado.pegarCargos()}" var="dep" itemLabel="#{dep.ca_nome}" itemValue="#{dep.ca_codigo}"/>
         	</p:selectOneMenu>
         

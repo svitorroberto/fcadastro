@@ -53,8 +53,13 @@ public class CadastraFiliadoMB implements Serializable{
 	
 	public String criarFiliado(){
 		CNP cnp = new CNP();
+		FiliadoDaoImpl fdi = new FiliadoDaoImpl();
+		
 		if(cnp.tomarDecisao(f.getCl_cnpj())== false){
 			addMessage("CPF/CNPJ do Funcionário Inválido");
+		}
+		else if (!fdi.getFiliado(f.getCl_cnpj()).equals(null)){
+			addMessage("Funcionário Cadastrado");
 		}
 		else{
 			transformaCodigos();
@@ -108,6 +113,9 @@ public class CadastraFiliadoMB implements Serializable{
 		
 	}
 	
+	public void verificaCnpj(){
+		
+	}
 	
 	public List<Cargo> pegarCargos(){
 		CargoDaoImpl cargos = new CargoDaoImpl();

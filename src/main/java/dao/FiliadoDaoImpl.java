@@ -42,6 +42,16 @@ public class FiliadoDaoImpl implements FiliadoDao{
         }
 	}
 	
+	public Filiado getFiliado(String cnpj){
+		try {
+			return (Filiado) entityManager.createQuery("SELECT f from Filiado f where f.cl_cnpj = :cl_cnpj").setParameter("cl_cnpj", cnpj).getSingleResult();
+		
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}
+		return null;
+		
+	}
 	public static void main(String[] args){
 		Filiado f = new Filiado();
 		FiliadoDaoImpl fd = new FiliadoDaoImpl();

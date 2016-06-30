@@ -6,6 +6,8 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import dao.ClienteDaoImpl;
 import model.Cliente;
@@ -19,6 +21,16 @@ public class TrocarSenhaMB {
 	private Cliente c = new Cliente();
 	private Cliente2 c2 = new Cliente2();
 	private ClienteDaoImpl clienteDao = new ClienteDaoImpl();
+	
+	
+	HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+	HttpSession session = (HttpSession) request.getSession();
+	
+	public TrocarSenhaMB(){
+		c = (Cliente) session.getAttribute("CNPJ_EMPRESA");	
+		c2.setCl_cnpj(c.getCl_cnpj());
+	}
+	
 	
 	
 	

@@ -19,6 +19,7 @@
     
 	<link rel="icon" type="image/png" href="../images/favicon2.png"/>
 	<link rel="StyleSheet" type="text/css" href="../css/style.css" media="screen" />
+
 </h:head>
 
 <h:body>
@@ -30,69 +31,18 @@
 <h:form id="formCadastro">
 <p:messages autoUpdate="true" />
 	<h:panelGrid columns="3" cellpadding="5">
-        <p:outputLabel for="cl_cnpjcli" value="CNPJ Empresa:" />
-        <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>
-        <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->
+        <p:outputLabel  value="CNPJ Empresa:" />
+        <p:outputLabel  value="#{cadastraFiliado.f.cl_cnpjcli}" />
+       <!--  <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>-->
         
-        <p:outputLabel for="cl_cliente" value="Nome da Empresa:" />
-        <p:inputText id="cl_cliente" size="50" value="#{cadastraFiliado.f.cl_cliente}" required="true"/>
-        <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->
+        <p:outputLabel value="Nome da Empresa:" />
+        <p:outputLabel value="#{cadastraFiliado.f.cl_cliente}" />
+<!--    <p:inputText id="cl_cliente" size="50" value="#{cadastraFiliado.f.cl_cliente}" required="true"/> -->
         
-        <p:outputLabel for="cl_cnpj" value="CPF:" />
-        <p:inputMask id="cl_cnpj" value="#{cadastraFiliado.f.cl_cnpj}" mask="999.999.999-99" required="true"/>
-        <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->
-        
-        <p:outputLabel for="cl_razao" value="Nome:" />
-        <p:inputText id="cl_razao" size="50" value="#{cadastraFiliado.f.cl_razao}" required="true" style="text-transform: uppercase"/>
-        <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->
-        
-        <p:outputLabel for="cl_dtnascimento" value="Data de Nascimento:" />
-        <p:inputMask id="cl_dtnascimento" value="#{cadastraFiliado.f.cl_dtnascimento}"  mask="99/99/9999"  required="true"/>
-        <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->
-        
-        <p:outputLabel for="cl_naturalidade" value="Naturalidade:" />
-        <p:inputText id="cl_naturalidade" size="50" value="#{cadastraFiliado.f.cl_naturalidade}" required="true" style="text-transform: uppercase"/>
-        <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->
-        
-        <p:outputLabel for="cl_materno" value="Nome da Mãe:" />
-        <p:inputText id="cl_materno" value="#{cadastraFiliado.f.cl_materno}" size="50"  required="true" style="text-transform: uppercase"/>
-        <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->
-        
-        <p:outputLabel for="cl_paterno" value="Nome do Pai:" />
-        <p:inputText id="cl_paterno" value="#{cadastraFiliado.f.cl_paterno}" size="50" style="text-transform: uppercase"/>
-        <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->
-        
-        <p:outputLabel for="cl_rg" value="Nº Identidade" />
-        <p:inputText id="cl_rg" value="#{cadastraFiliado.f.cl_rg}" required="true">
-                <p:keyFilter regEx="/[\d\-]/"/>
-        </p:inputText>
-        <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->
-        
-        <p:outputLabel for="cl_rgemissor" value="Órgão emissor" />
-        <p:inputText id="cl_rgemissor" value="#{cadastraFiliado.f.cl_rgemissor}"  required="true" style="text-transform: uppercase"/>
-        <p:watermark for="cl_rgemissor" value="SSP-GO" id="watermark" />
-        
-        <p:outputLabel for="cl_codgru" value="Vículo Jurídico" />
-        <p:selectOneMenu id="cl_codgru" style="width:125px" value="#{cadastraFiliado.f.cl_codgru}">
-            <f:selectItem itemLabel="Servidor" itemValue="1" />
-            <f:selectItem itemLabel="Empregado" itemValue="2" />
-            <f:selectItem itemLabel="Carregador" itemValue="3" />
-            <f:selectItem itemLabel="Permissionário" itemValue="4" />
-            <f:selectItem itemLabel="Concessionário" itemValue="5" />
-        </p:selectOneMenu>
-        <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->
-        
-        <p:outputLabel for="cl_dtadmissao" value="Data de Admissão:" />
-        <p:inputMask id="cl_dtadmissao"  value="#{cadastraFiliado.f.cl_dtadmissao}" mask="99/99/9999" required="true"/>
-        <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->
-        
-        <p:outputLabel for="cl_cargo" value="Cargo na Empresa" />
-        <p:inputText id="cl_cargo"  value="#{cadastraFiliado.f.cl_cargo}" required="true" style="text-transform: uppercase"/>
-        <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->
-        
+        <div id="divCep">
         <p:outputLabel for="cl_cep" value="CEP:" />
         <p:inputMask id="cl_cep"  value="#{cadastraFiliado.f.cl_cep}" mask="99999-999" required="true"/>
-        <p:commandButton  type="button" image="ui-icon-search" onclick="PF('localizar').show();" />
+        <p:commandButton  type="button" icon="ui-icon-search" onclick="PF('localizar').show();" />
         
         <p:outputLabel for="cl_enderec" value="Endereço" />
         <p:inputText id="cl_enderec" size="50" value="#{cadastraFiliado.f.cl_enderec}" required="true" style="text-transform: uppercase"/>
@@ -115,13 +65,82 @@
         <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->
         
         <p:outputLabel for="cl_estado" value="Estado:" />
-        <p:inputText id="cl_estado" size="50" value="#{cadastraFiliado.f.cl_estado}" required="true" style="text-transform: uppercase"/>
-        <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->
+        <p:inputMask id="cl_estado" mask="aa" value="#{cadastraFiliado.f.cl_estado}" required="true" style="text-transform: uppercase"/> 
+   <!--     <p:inputText id="cl_estado" size="50" value="#{cadastraFiliado.f.cl_estado}" required="true" style="text-transform: uppercase"/> -->
         
         <p:outputLabel for="cl_pais" value="País:" />
         <p:inputText id="cl_pais" size="50" value="#{cadastraFiliado.f.cl_pais}" required="true" style="text-transform: uppercase"/>
         <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->
-
+		</div>
+        
+        <p:outputLabel for="cl_cnpj" value="CPF:" />
+        <p:inputMask id="cl_cnpj" value="#{cadastraFiliado.f.cl_cnpj}" mask="999.999.999-99" required="true"/>
+        <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->
+        
+        <p:outputLabel for="cl_razao" value="Nome:" />
+        <p:inputText id="cl_razao" size="50" value="#{cadastraFiliado.f.cl_razao}" required="true" style="text-transform: uppercase">
+        	<p:keyFilter regEx="/[A-Z]/i"/>
+        </p:inputText>
+        <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->
+        
+        <p:outputLabel for="cl_sexo" value="Sexo" />
+        <p:selectOneMenu id="cl_sexo" style="width:125px" value="#{cadastraFiliado.f.cl_sexo}">
+            <f:selectItem itemLabel="Masculino" itemValue="M" />
+            <f:selectItem itemLabel="Feminino" itemValue="F" />
+        </p:selectOneMenu>
+        <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->
+        
+        <p:outputLabel for="cl_dtnascimento" value="Data de Nascimento:" />
+        <p:inputMask id="cl_dtnascimento" value="#{cadastraFiliado.f.cl_dtnascimento}"  mask="99/99/9999"  required="true"/>
+        <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->
+        
+        <p:outputLabel for="cl_naturalidade" value="Naturalidade:" />
+        <p:inputText id="cl_naturalidade" size="50" value="#{cadastraFiliado.f.cl_naturalidade}" required="true" style="text-transform: uppercase">
+        	<p:keyFilter regEx="/[A-Z]/i"/>
+        </p:inputText>
+        <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->
+        
+        <p:outputLabel for="cl_materno" value="Nome da Mãe:" />
+        <p:inputText id="cl_materno" value="#{cadastraFiliado.f.cl_materno}" size="50"  required="true" style="text-transform: uppercase"/>
+        <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->
+        
+        <p:outputLabel for="cl_paterno" value="Nome do Pai:" />
+        <p:inputText id="cl_paterno" value="#{cadastraFiliado.f.cl_paterno}" size="50" style="text-transform: uppercase"/>
+        <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->
+        
+        <p:outputLabel for="cl_rg" value="Nº Identidade" />
+        <p:inputText id="cl_rg" value="#{cadastraFiliado.f.cl_rg}" required="true">
+                <p:keyFilter regEx="/[\d\-]/"/>
+        </p:inputText>
+        <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->
+        
+        <p:outputLabel for="cl_rgemissor" value="Órgão emissor" />
+        <p:inputText id="cl_rgemissor" value="#{cadastraFiliado.f.cl_rgemissor}"  required="true" style="text-transform: uppercase"/>
+        <p:watermark for="cl_rgemissor" value="SSP-GO" id="watermark" />
+        
+        <p:outputLabel for="cl_codgru" value="Vículo Jurídico" />
+        <p:selectOneMenu id="cl_codgru" style="width:125px" value="#{cadastraFiliado.f.cl_codgru}">
+            <f:selectItem itemLabel="Funcionário" itemValue="9" />
+            <f:selectItem itemLabel="Carregador" itemValue="32" />
+            <f:selectItem itemLabel="Permissionário" itemValue="2" />
+            <f:selectItem itemLabel="Concessionário" itemValue="1" />
+        </p:selectOneMenu>
+        <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->
+        
+        <p:outputLabel for="cl_dtadmissao" value="Data de Admissão:" />
+        <p:inputMask id="cl_dtadmissao"  value="#{cadastraFiliado.f.cl_dtadmissao}" mask="99/99/9999" required="true"/>
+        <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->
+        
+        
+        <p:outputLabel for="cl_cargo" value="Cargo na Empresa" />
+        <p:selectOneMenu id="cl_cargo" value="#{cadastraFiliado.f.cl_cargo}" style="width:200px">
+            	<f:selectItems value="#{cadastraFiliado.pegarCargos()}" var="dep" itemLabel="#{dep.ca_nome}" itemValue="#{dep.ca_codigo}"/>
+        	</p:selectOneMenu>
+        
+        
+        <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->
+        
+		
         <p:outputLabel for="cl_fone1" value="Fone:" />
         <p:inputText id="cl_fone1" value="#{cadastraFiliado.f.cl_fone1}" required="true">
         	<p:keyFilter regEx="/[\d\-]/"/>
@@ -129,7 +148,10 @@
         <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->
         
 		<p:outputLabel for="cl_email" value="E-mail" />
-        <p:inputText id="cl_email"  required="true" style="text-transform: uppercase"/>
+        <p:inputText id="cl_email"  value="#{cadastraFiliado.f.cl_email}" required="true" style="text-transform: uppercase">
+        	<p:keyFilter regEx="/[a-z0-9_\.\-@]/i"/>
+        </p:inputText>
+        
         <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->
           
         <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->  
@@ -146,7 +168,7 @@
     <h:form id="formDialog">
                    <p:outputLabel for="cl_pesquisa" value="Cep:" />
                    <p:inputMask id="cl_pesquisa"  value="#{cadastraFiliado.f.cl_cep}" mask="99999-999" required="true"/>
-                   <p:commandButton id="editar" actionListener="#{cadastraFiliado.procuraCep}" update="formCadastro" onclick="localizar.hide()" image="ui-icon-search" style="width:28px;height:28px" title="Edit"/>
+                   <p:commandButton id="editar" actionListener="#{cadastraFiliado.procuraCep}" onclick="localizar.hide()" icon="ui-icon-search" style="width:28px;height:28px" title="Procurar"/>
  					<br/><br/><a target="_blank" href="http://www.buscacep.correios.com.br/sistemas/buscacep/ ">Não sabe seu CEP? Consulte Aqui</a>
 				
  				</h:form>

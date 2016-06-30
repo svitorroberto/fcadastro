@@ -6,10 +6,9 @@ public class Valores {
 	
 	public static void main(String[] args){
 		Cliente c = new Cliente();
-		c.setCl_cnpj("99999999999999");
-		c.setCl_codigo("1399");
-		c.setCl_razao("Vitor S/A");
-		c.setCl_senha("123");
+		c.setCl_cnpj("00000000000000");
+		c.setCl_codigo("1404");
+		c.setCl_razao("ADMINISTRADOR CEASA");
 		
 		ClienteDaoImpl cdi = new ClienteDaoImpl();
 		cdi.inserir(c);

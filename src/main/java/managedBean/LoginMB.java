@@ -20,18 +20,22 @@ public class LoginMB implements Serializable{
 	private Cliente c = new Cliente();
 	private ClienteDaoImpl clienteDao = new ClienteDaoImpl();
 	
+	//GRAVAR OBJETO NA SESSÃO
+		FacesContext fc = FacesContext.getCurrentInstance();
+		HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
+	
 	//True se usuário está logado e false caso contrário
 	  private boolean loggedIn;
 	   
 	  //Armazena o usuário logado
 	  private Cliente clienteLogado;
 	  
-	  HttpSession session;
-	  
 	
 	public String doLogin() throws IOException {
         //PESQUISA SE HÁ ALGUM OBJETO COM A COMBINAÇÃO CNPJ+SENHA
 		c = clienteDao.getUsuario(c.getCl_cnpj(), c.getCl_senha());
+		session.setAttribute("CNPJ_EMPRESA", c);
+		
         if (c == null) {
               c = new Cliente();
               FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Empresa não encontrada ou senha incorreta","Erro no Login!"));
@@ -70,6 +74,7 @@ public class LoginMB implements Serializable{
 	    
 	         setClienteLogado(null);
 	         setLoggedIn(false);
+	         session.setAttribute("CNPJ_EMPRESA", null);
 	         FacesContext.getCurrentInstance().getExternalContext().redirect("/webCadastro/Login.jsf");
 	   //    addInfoMessage("Logout realizado com sucesso !");
 	         return "/Login.jsf?faces-redirect=true";

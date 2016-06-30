@@ -1,13 +1,16 @@
 package managedBean;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
+import dao.CargoDaoImpl;
 import dao.CepDaoImpl;
 import dao.CidadeDaoImpl;
 import dao.ClienteDaoImpl;
@@ -15,6 +18,7 @@ import dao.EstadoDaoImpl;
 import dao.FiliadoDaoImpl;
 import dao.PaisDaoImpl;
 import model.CNP;
+import model.Cargo;
 import model.Cep;
 import model.Cidade;
 import model.Cliente;
@@ -27,10 +31,25 @@ import model.Pais;
 public class CadastraFiliadoMB implements Serializable{
 	
 	private static final long serialVersionUID = 6529685090067757690L;
-	public Filiado f = new Filiado();
+	public Filiado f;
 	public LoginMB login = new LoginMB();
+	Cliente c2 = new Cliente();
 	
-	ServletRequest request;
+	//RECUPERA OBJETO GRAVADO NA SESSÃO
+	HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+	HttpSession session = (HttpSession) request.getSession();
+	
+	public CadastraFiliadoMB(){
+		System.out.println("CONSTRUTOR");
+		f = new Filiado();
+		c2 = (Cliente) session.getAttribute("CNPJ_EMPRESA");	
+		f.setCl_cnpjcli(c2.getCl_cnpj());
+		f.setCl_cliente(c2.getCl_razao());
+	}
+	
+	
+	
+	
 	
 	public String criarFiliado(){
 		CNP cnp = new CNP();
@@ -41,9 +60,12 @@ public class CadastraFiliadoMB implements Serializable{
 			transformaCodigos();
 			new FiliadoDaoImpl().inserir(f);
 			addMessage("Funcionário Cadastrado com sucesso!");
+			System.out.println(f.getCl_cnpjcli());
 			System.out.println(f.toString());
 			f = new Filiado();
-
+			c2 = (Cliente) session.getAttribute("CNPJ_EMPRESA");	
+			f.setCl_cnpjcli(c2.getCl_cnpj());
+			f.setCl_cliente(c2.getCl_razao());
 			
 		}
 		return "cnpj";
@@ -60,8 +82,7 @@ public class CadastraFiliadoMB implements Serializable{
 		f.setCl_cidade(cep.getCid());
 		f.setCl_estado(cep.getUf());
 		f.setCl_pais("BRASIL");
-		System.out.println(f.getCl_estado());
-		
+	
 		
 		return "cep";
 	}
@@ -87,6 +108,11 @@ public class CadastraFiliadoMB implements Serializable{
 		
 	}
 	
+	
+	public List<Cargo> pegarCargos(){
+		CargoDaoImpl cargos = new CargoDaoImpl();
+		return cargos.listar();
+	}
 	
 	
 	public void addMessage(String summary) {

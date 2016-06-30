@@ -20,8 +20,8 @@
         <h:form>
               <p:panelGrid columns="2">
               
-                <p:outputLabel for="nomeUsuario" value="CNPJ:" />
-                    <p:inputMask id="nomeUsuario" required="true" value="#{trocarSenhaMB.c2.cl_cnpj}" mask="99.999.999/9999-99"/>
+                <p:outputLabel value="CNPJ:" />
+                <p:outputLabel value="#{trocarSenhaMB.c2.cl_cnpj}" />
                      
                     <p:outputLabel for="senha" value="Senha:" />
                     <p:password id="senha" value="#{trocarSenhaMB.c2.senha}" match="senha2"/>

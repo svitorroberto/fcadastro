@@ -25,6 +25,7 @@ public class Filiado implements Serializable{
 	private String cl_fone1;
 	private String cl_cliente;
 	private String cl_cnpjcli;
+	private String cl_sexo;
 	
 	private String cl_dtnascimento;
 	private String cl_naturalidade;
@@ -39,11 +40,15 @@ public class Filiado implements Serializable{
 	
 //	private String cl_carteira;
 
-	
-	
-	
+
 	public String getCl_codigo() {
 		return cl_codigo;
+	}
+	public String getCl_sexo() {
+		return cl_sexo;
+	}
+	public void setCl_sexo(String cl_sexo) {
+		this.cl_sexo = cl_sexo;
 	}
 	public void setCl_codigo(String cl_codigo) {
 		this.cl_codigo = cl_codigo;
@@ -52,31 +57,31 @@ public class Filiado implements Serializable{
 		return cl_razao;
 	}
 	public void setCl_razao(String cl_razao) {
-		this.cl_razao = cl_razao;
+		this.cl_razao = cl_razao.toUpperCase();
 	}
 	public String getCl_enderec() {
 		return cl_enderec;
 	}
 	public void setCl_enderec(String cl_enderec) {
-		this.cl_enderec = cl_enderec;
+		this.cl_enderec = cl_enderec.toUpperCase();
 	}
 	public String getCl_bairro() {
 		return cl_bairro;
 	}
 	public void setCl_bairro(String cl_bairro) {
-		this.cl_bairro = cl_bairro;
+		this.cl_bairro = cl_bairro.toUpperCase();
 	}
 	public String getCl_complem() {
 		return cl_complem;
 	}
 	public void setCl_complem(String cl_complem) {
-		this.cl_complem = cl_complem;
+			this.cl_complem = cl_complem;
 	}
 	public String getCl_numero() {
 		return cl_numero;
 	}
 	public void setCl_numero(String cl_numero) {
-		this.cl_numero = cl_numero;
+			this.cl_numero = cl_numero;
 	}
 	public String getCl_cep() {
 		return cl_cep;
@@ -89,19 +94,19 @@ public class Filiado implements Serializable{
 		return cl_cidade;
 	}
 	public void setCl_cidade(String cl_cidade) {
-		this.cl_cidade = cl_cidade;
+		this.cl_cidade = cl_cidade.toUpperCase();
 	}
 	public String getCl_estado() {
 		return cl_estado;
 	}
 	public void setCl_estado(String cl_estado) {
-		this.cl_estado = cl_estado;
+		this.cl_estado = cl_estado.toUpperCase();
 	}
 	public String getCl_pais() {
 		return cl_pais;
 	}
 	public void setCl_pais(String cl_pais) {
-		this.cl_pais = cl_pais;
+		this.cl_pais = cl_pais.toUpperCase();
 	}
 	public String getCl_fone1() {
 		return cl_fone1;
@@ -159,19 +164,19 @@ public class Filiado implements Serializable{
 		return cl_naturalidade;
 	}
 	public void setCl_naturalidade(String cl_naturalidade) {
-		this.cl_naturalidade = cl_naturalidade;
+		this.cl_naturalidade = cl_naturalidade.toUpperCase();
 	}
 	public String getCl_materno() {
 		return cl_materno;
 	}
 	public void setCl_materno(String cl_materno) {
-		this.cl_materno = cl_materno;
+		this.cl_materno = cl_materno.toUpperCase();
 	}
 	public String getCl_paterno() {
 		return cl_paterno;
 	}
 	public void setCl_paterno(String cl_paterno) {
-		this.cl_paterno = cl_paterno;
+		this.cl_paterno = cl_paterno.toUpperCase();
 	}
 	public String getCl_rg() {
 		return cl_rg;
@@ -183,13 +188,13 @@ public class Filiado implements Serializable{
 		return cl_rgemissor;
 	}
 	public void setCl_rgemissor(String cl_rgemissor) {
-		this.cl_rgemissor = cl_rgemissor;
+		this.cl_rgemissor = cl_rgemissor.toUpperCase();
 	}
 	public String getCl_email() {
 		return cl_email;
 	}
 	public void setCl_email(String cl_email) {
-		this.cl_email = cl_email;
+		this.cl_email = cl_email.toUpperCase();
 	}
 	public String getCl_codgru() {
 		return cl_codgru;

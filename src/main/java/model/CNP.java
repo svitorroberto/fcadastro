@@ -1,4 +1,13 @@
 package model;
+/**
+* O webCadastro é um programa que cadastra funcionários
+* de empresas cadastradas no sistema da CEASA-GO 
+*
+* @author  Vítor Roberto (http://www.linkedin.com/in/SVitorRoberto)
+* @version 1.0
+* @since   01/07/2016 
+* 
+*/
 public class CNP {
    private static final int[] pesoCPF = {11, 10, 9, 8, 7, 6, 5, 4, 3, 2};
    private static final int[] pesoCNPJ = {6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2};

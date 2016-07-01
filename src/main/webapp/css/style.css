@@ -31,6 +31,20 @@ h1{
 	color: #313246;
 	text-align: center;
 }
+h2{
+	text-align: center;
+}
+h4{
+	text-align: center;
+	color: white;
+}
+h4 > a{
+	text-align: center;
+	color: white;
+}
+h5{
+	text-align: center;
+}
 /* LINKS */
 #link1{
     font-size: 25px;

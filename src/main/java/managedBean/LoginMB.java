@@ -57,7 +57,7 @@ public class LoginMB implements Serializable{
             setClienteLogado(c);
             FacesContext.getCurrentInstance().getExternalContext().redirect("/webCadastro/restrito/AlterarSenha.jsf");
         	return "/restrito/AlterarSenha.jsf?faces-redirect=true";
-        } else if(c.getCl_cnpj().equals("99999999999999")){
+        } else if(c.getCl_cnpj().equals("00000000000000")){
         	System.out.println("Login MASTER OK");
         	setLoggedIn(true);
             setClienteLogado(c);

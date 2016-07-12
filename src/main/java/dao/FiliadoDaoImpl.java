@@ -1,5 +1,7 @@
 package dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -61,6 +63,19 @@ public class FiliadoDaoImpl implements FiliadoDao{
 		return null;
 		
 	}
+	
+	public int getQtdFiliado(String cnpj){
+		try {
+			List<Filiado> f = (List<Filiado>) entityManager.createQuery("SELECT f from Filiado f where f.cl_cnpj = :cl_cnpj").setParameter("cl_cnpj", cnpj).getResultList();
+			return f.size(); 
+		
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}
+		return 0;
+		
+	}
+	
 	public static void main(String[] args){
 		Filiado f = new Filiado();
 		FiliadoDaoImpl fd = new FiliadoDaoImpl();

@@ -63,24 +63,26 @@ public class CadastraFiliadoMB implements Serializable{
 	public String criarFiliado(){
 		CNP cnp = new CNP();
 		FiliadoDaoImpl fdi = new FiliadoDaoImpl();
-		
+		System.out.println("CNPJ"+f.getCl_cnpjcli());
+		System.out.println("NOME"+f.getCl_cliente());
 		if(cnp.tomarDecisao(f.getCl_cnpj())== false){
 			addMessage("CPF/CNPJ do Funcionário Inválido");
+			System.out.println("CPF/CNPJ do Funcionário Inválido");
 		}
-		else if (!fdi.getFiliado(f.getCl_cnpj()).equals(null)){
-			addMessage("Funcionário Cadastrado");
+		else if (fdi.getQtdFiliado(f.getCl_cnpj())>0){
+			addMessage("Erro! funcionário já foi cadastrado.");
+			System.out.println("Erro! funcionário já foi cadastrado.");
+			System.out.println(fdi.getQtdFiliado(f.getCl_cnpj()));
 		}
 		else{
 			transformaCodigos();
 			new FiliadoDaoImpl().inserir(f);
-			addMessage("Funcionário Cadastrado com sucesso!");
-			System.out.println(f.getCl_cnpjcli());
-			System.out.println(f.toString());
+			addMessage("Sucesso! Funcionário Cadastrado!");
 			f = new Filiado();
 			c2 = (Cliente) session.getAttribute("CNPJ_EMPRESA");	
 			f.setCl_cnpjcli(c2.getCl_cnpj());
 			f.setCl_cliente(c2.getCl_razao());
-			
+			System.out.println("NÃO ERRO");
 		}
 		return "cnpj";
 		

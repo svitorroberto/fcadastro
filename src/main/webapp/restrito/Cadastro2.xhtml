@@ -5,7 +5,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
-
+ <meta charset="UTF-8"/>
 <h:head>
 
     <meta charset="utf-8"/>
@@ -27,11 +27,11 @@
 <img src="../images/logo.jpg" alt="CEASA-GO" height="142" width="420"/>
 </div>
 <div id="todo">
-<h1>CADASTRO DE FUNCIONÁRIO COM CPF</h1>
+<h1>CADASTRO DE FUNCIONÁRIO</h1>
 <h:form id="formCadastro">
 <p:messages autoUpdate="true" />
 	<h:panelGrid columns="3" cellpadding="5">
-        <p:outputLabel  value="CNPJ Empresa:" />
+        <p:outputLabel  value="CNPJ/CPF Empresa:" />
         <p:outputLabel  value="#{cadastraFiliado.f.cl_cnpjcli}" />
        <!--  <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>-->
         
@@ -152,6 +152,7 @@
         
         <p:outputLabel for="cl_cargo" value="Cargo na Empresa" />
         <p:selectOneMenu id="cl_cargo" value="#{cadastraFiliado.f.cl_cargo}" style="width:200px">
+        		<f:selectItem itemLabel="" itemValue="" />
             	<f:selectItems value="#{cadastraFiliado.pegarCargos()}" var="dep" itemLabel="#{dep.ca_nome}" itemValue="#{dep.ca_codigo}"/>
         	</p:selectOneMenu>
         
@@ -166,7 +167,7 @@
         <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->
         
 		<p:outputLabel for="cl_email" value="E-mail" />
-        <p:inputText id="cl_email"  value="#{cadastraFiliado.f.cl_email}" required="true" style="text-transform: uppercase">
+        <p:inputText id="cl_email"  value="#{cadastraFiliado.f.cl_email}" size="50" required="true" style="text-transform: uppercase">
         </p:inputText>
         
         <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->

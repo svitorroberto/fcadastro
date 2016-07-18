@@ -169,23 +169,12 @@
 		<p:outputLabel for="cl_email" value="E-mail" />
         <p:inputText id="cl_email"  value="#{cadastraFiliado.f.cl_email}" size="50" required="true" style="text-transform: uppercase">
         </p:inputText>
+        
         <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->
           
-        
-        <p:commandButton type="button" value="Tirar Foto" onclick="PF('pc').capture(); PF('dlg2').show();"/>
-        
-        <p:photoCam id="camera" widgetVar="pc" listener="#{cadastraFiliado.oncapture}"/>
-        <p:outputPanel id="photo"/>
-        <p:dialog header="Tirar Foto" widgetVar="dlg2" modal="true" height="100">
-    		<h:outputText value="Foto gravada com sucesso!" />
-		</p:dialog>
- 
-          
-          
-          
-		<p:outputLabel id="lkj" value="" />
+        <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->  
+        <!-- <p:inputMask id="cl_cnpjcli" mask="99.999.999/9999-99" value="#{cadastraFiliado.f.cl_cnpjcli}" required="true"/>  -->
         <p:commandButton value="Cadastrar" actionListener="#{cadastraFiliado.criarFiliado}" ajax="false" />
-        
 	</h:panelGrid>
 </h:form>
 <h:form id="form2">

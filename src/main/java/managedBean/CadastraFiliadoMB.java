@@ -27,7 +27,6 @@ import dao.EstadoDaoImpl;
 import dao.FiliadoDaoImpl;
 import dao.ImagemDaoImpl;
 import dao.PaisDaoImpl;
-import javassist.bytecode.ByteArray;
 import model.CNP;
 import model.Cargo;
 import model.Cep;

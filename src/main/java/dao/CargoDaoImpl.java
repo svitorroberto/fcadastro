@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.OrderBy;
 import javax.persistence.Persistence;
 
 import model.Cargo;
@@ -37,7 +38,7 @@ public class CargoDaoImpl implements CargoDao{
 		
 	@SuppressWarnings("unchecked")
 	public List<Cargo> listar() {
-		return entityManager.createQuery("from Cargo").getResultList();
+		return entityManager.createQuery("from Cargo order by ca_nome").getResultList();
 	}
 
 	public Cargo getCargo() {

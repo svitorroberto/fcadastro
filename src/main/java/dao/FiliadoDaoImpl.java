@@ -53,9 +53,38 @@ public class FiliadoDaoImpl implements FiliadoDao{
         }
 	}
 	
+public String alterar(Filiado f) {
+		
+		try {
+			f.setCl_codigo(getFiliado2(f.getCl_cnpj(), f.getCl_cnpjcli()).getCl_codigo());
+			entityManager.getTransaction().begin();
+            entityManager.merge(f);
+            entityManager.getTransaction().commit();
+            System.out.println(f.getCl_codigo());
+            System.out.println("ALTEROU");
+            
+            return f.getCl_codigo();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            entityManager.getTransaction().rollback();
+            return null;
+        }
+	}
+	
 	public Filiado getFiliado(String cnpj){
 		try {
 			return (Filiado) entityManager.createQuery("SELECT f from Filiado f where f.cl_cnpj = :cl_cnpj").setParameter("cl_cnpj", cnpj).getSingleResult();
+		
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}
+		return null;
+		
+	}
+	public Filiado getFiliado2(String cnpj, String emp){
+		try {
+			return (Filiado) entityManager.createQuery("SELECT f from Filiado f where f.cl_cnpj = :cl_cnpj and f.cl_cnpjcli = :cl_cnpjcli").setParameter("cl_cnpj", cnpj).setParameter("cl_cnpjcli", emp).getSingleResult();
+			 
 		
 		}catch(Exception ex){
 			ex.printStackTrace();

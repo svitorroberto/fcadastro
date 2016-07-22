@@ -62,13 +62,15 @@ public class LoginMB implements Serializable{
         	setLoggedIn(true);
             setClienteLogado(c);
             FacesContext.getCurrentInstance().getExternalContext().redirect("/webCadastro/restrito/admin/RestaurarSenha.jsf");
+            System.out.println(session.getId());
             return "/restrito/admin/RestaurarSenha.jsf?faces-redirect=true";
         }
         else {
-        	System.out.println("Login OK");
+        	System.out.println("Login OK ["+c.getCl_codigo()+"] ["+c.getCl_razao()+"]");
         	setLoggedIn(true);
             setClienteLogado(c);
             FacesContext.getCurrentInstance().getExternalContext().redirect("/webCadastro/restrito/Cadastro.jsf");
+            System.out.println(session.getId());
             return "/restrito/Cadastro.jsf?faces-redirect=true";
         }
         
@@ -84,12 +86,16 @@ public class LoginMB implements Serializable{
 	         setClienteLogado(null);
 	         setLoggedIn(false);
 	         session.setAttribute("CNPJ_EMPRESA", null);
+	         session.invalidate();
 	         FacesContext.getCurrentInstance().getExternalContext().redirect("/webCadastro/Login.jsf");
 	   //    addInfoMessage("Logout realizado com sucesso !");
 	         return "/Login.jsf?faces-redirect=true";
 	  }
 	
-
+	  public void voltar() throws IOException{
+		    
+	         FacesContext.getCurrentInstance().getExternalContext().redirect("/webCadastro/restrito/Cadastro.jsf");
+	  }
 	public Cliente getC() {
 		return c;
 	}

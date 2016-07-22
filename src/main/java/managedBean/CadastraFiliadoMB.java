@@ -62,30 +62,27 @@ public class CadastraFiliadoMB implements Serializable{
 	HttpSession session = (HttpSession) request.getSession();
 	
 	public CadastraFiliadoMB(){
-		System.out.println("CONSTRUTOR");
+//		System.out.println("CONSTRUTOR");
 		f = new Filiado();
 		c2 = (Cliente) session.getAttribute("CNPJ_EMPRESA");	
 		f.setCl_cnpjcli(c2.getCl_cnpj());
 		f.setCl_cliente(c2.getCl_razao());
 	}
 	
-	
-	
-	
-	
-	public String criarFiliado(){
+	public String criarFiliado() throws IOException{
 		CNP cnp = new CNP();
 		FiliadoDaoImpl fdi = new FiliadoDaoImpl();
-		System.out.println("CNPJ"+f.getCl_cnpjcli());
-		System.out.println("NOME"+f.getCl_cliente());
+//		System.out.println("CNPJ"+f.getCl_cnpjcli());
+//		System.out.println("NOME"+f.getCl_cliente());
 		if(cnp.tomarDecisao(f.getCl_cnpj())== false){
 			addMessage("CPF/CNPJ do Funcionário Inválido");
 			System.out.println("CPF/CNPJ do Funcionário Inválido");
 		}
 		else if (fdi.getQtdFiliado(f.getCl_cnpj())>0){
-			addMessage("Erro! funcionário já foi cadastrado.");
-			System.out.println("Erro! funcionário já foi cadastrado.");
-			System.out.println(fdi.getQtdFiliado(f.getCl_cnpj()));
+			FacesContext.getCurrentInstance().getExternalContext().redirect("/webCadastro/restrito/FuncAtencao.jsf");
+			
+			System.out.println("Funcionário já foi cadastrado.");
+			
 		}
 		else if(filename.equals(null)){
 			addMessage("Erro! tirar foto do funcionário");
@@ -105,10 +102,46 @@ public class CadastraFiliadoMB implements Serializable{
 		return "cnpj";
 		
 	}
-
-	public String procuraCep(){
+	
+	public String alterarFiliado() throws IOException{
+		CNP cnp = new CNP();
+		System.out.println("CNPJ "+f.getCl_cnpjcli());
+		System.out.println("NOME "+f.getCl_cliente());
+		if(cnp.tomarDecisao(f.getCl_cnpj())== false){
+			addMessage("CPF/CNPJ do Funcionário Inválido");
+			System.out.println("CPF/CNPJ do Funcionário Inválido");
+		}
+		else if(filename.equals(null)){
+			addMessage("Erro! tirar foto do funcionário");
+		}
+		else{
+			transformaCodigos();
+			String s = new FiliadoDaoImpl().alterar(f);
+			insereImagem2(s);
+			addMessage("Sucesso! Funcionário Alterado!");
+			f = new Filiado();
+			filename="";
+			c2 = (Cliente) session.getAttribute("CNPJ_EMPRESA");	
+			f.setCl_cnpjcli(c2.getCl_cnpj());
+			f.setCl_cliente(c2.getCl_razao());
+			System.out.println("NÃO ERRO");
+			FacesContext.getCurrentInstance().getExternalContext().redirect("/webCadastro/restrito/FuncAlterado.jsf");
+			
+		}
+		return "cnpj";
+		
+	}
+	
+	//LUPA DO CADASTRO, BUSCA CEP NO BANCO E RETORNA VALORES
+	public String procuraCep() throws IOException{
 		CepDaoImpl cdi = new CepDaoImpl();
 		Cep cep = cdi.getCep(f.getCl_cep());
+		if(cep.equals(null)){
+			FacesContext.getCurrentInstance().getExternalContext().redirect("/webCadastro/restrito/FuncAlterado.jsf");
+			addMessage("Erro! CEP não encontrado");
+		}
+		else{
+			
 		f.setCl_cep(cep.getCep());
 		f.setCl_enderec(cep.getDesc02());
 		f.setCl_bairro(cep.getBai());
@@ -116,11 +149,13 @@ public class CadastraFiliadoMB implements Serializable{
 		f.setCl_cidade(cep.getCid());
 		f.setCl_estado(cep.getUf());
 		f.setCl_pais("BRASIL");
+		}
 	
 		
 		return "cep";
 	}
 	
+	//TRANSFORMA NOMES DE CIDADE/ESTADO/PAIS EM ID
 	public void transformaCodigos(){
 		Estado estado = new Estado();
 		Cidade cidade = new Cidade();
@@ -157,9 +192,8 @@ public class CadastraFiliadoMB implements Serializable{
 
 	//GRAVA IMAGEM NO DIRETÓRIO
 	private String getRandomImageName() {
-        int i = (int) (Math.random() * 100000000);
-         
-        return String.valueOf(i);
+            
+        return session.getId();
     }
  
     public String getFilename() {
@@ -194,7 +228,27 @@ public class CadastraFiliadoMB implements Serializable{
     	img.setIe_serie("1");
     	img.setIe_fornece(f.getCl_codigo());
     	img.setIe_numero(f.getCl_codigo());
-    	Path path = Paths.get("D:"+File.separator+"img_filiado"+File.separator+"imagem"+File.separator+filename+ ".jpg");
+    	System.out.println(f.getCl_codigo());
+    	Path path = Paths.get("D:"+File.separator+"img_filiado"+File.separator+"imagem"+File.separator+session.getId()+".jpg");
+    	try {
+			img.setIe_imagem(Files.readAllBytes(path));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+    	ImagemDaoImpl idi = new ImagemDaoImpl();
+    	idi.gravarImagem(img);
+    }
+    //FIM GRAVA IMAGEM
+    
+    public void insereImagem2(String s){
+    	Imagem img = new Imagem();
+    	img.setIe_empresa("0001");
+    	img.setIe_filial("0001");
+    	img.setIe_tipoimg("JPG");
+    	img.setIe_serie("1");
+    	img.setIe_fornece(s);
+    	img.setIe_numero(s);
+    	Path path = Paths.get("D:"+File.separator+"img_filiado"+File.separator+"imagem"+File.separator+session.getId()+".jpg");
     	try {
 			img.setIe_imagem(Files.readAllBytes(path));
 		} catch (IOException e) {

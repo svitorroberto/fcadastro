@@ -14,5 +14,6 @@ import model.Filiado;
 public interface FiliadoDao {
 	
 	public void inserir(Filiado f);
+	public String alterar(Filiado f);
 
 }

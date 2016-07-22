@@ -12,7 +12,7 @@ img{
 	margin:0 auto;
 }
 #todo{
-	width: 760px;
+	width: 780px;
 	margin:0 auto;
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
@@ -50,11 +50,19 @@ h5{
 }
 #form2\3a link2{
 	font-size: 25px;
-    margin-left: 710px;
+    margin-left: 300px;
 }
 #form2\3a link3{
     font-size: 25px;
-    margin-left: 350px;
+    margin-left: 705px;
+}
+#form2\3a link4{
+    font-size: 25px;
+    margin-left: 615px;
+}
+#form2\3a link5{
+    font-size: 25px;
+    margin-left: 30px;
 }
 #form2{
 	margin-top: 27px;

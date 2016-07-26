@@ -97,7 +97,6 @@ public class CadastraFiliadoMB implements Serializable{
 			c2 = (Cliente) session.getAttribute("CNPJ_EMPRESA");	
 			f.setCl_cnpjcli(c2.getCl_cnpj());
 			f.setCl_cliente(c2.getCl_razao());
-			System.out.println("NÃO ERRO");
 		}
 		return "cnpj";
 		
@@ -105,8 +104,6 @@ public class CadastraFiliadoMB implements Serializable{
 	
 	public String alterarFiliado() throws IOException{
 		CNP cnp = new CNP();
-		System.out.println("CNPJ "+f.getCl_cnpjcli());
-		System.out.println("NOME "+f.getCl_cliente());
 		if(cnp.tomarDecisao(f.getCl_cnpj())== false){
 			addMessage("CPF/CNPJ do Funcionário Inválido");
 			System.out.println("CPF/CNPJ do Funcionário Inválido");
@@ -124,7 +121,7 @@ public class CadastraFiliadoMB implements Serializable{
 			c2 = (Cliente) session.getAttribute("CNPJ_EMPRESA");	
 			f.setCl_cnpjcli(c2.getCl_cnpj());
 			f.setCl_cliente(c2.getCl_razao());
-			System.out.println("NÃO ERRO");
+//			System.out.println("NÃO ERRO");
 			FacesContext.getCurrentInstance().getExternalContext().redirect("/webCadastro/restrito/FuncAlterado.jsf");
 			
 		}
@@ -222,16 +219,12 @@ public class CadastraFiliadoMB implements Serializable{
     
     public void insereImagem(){
     	Imagem img = new Imagem();
-    	img.setIe_empresa("0001");
-    	img.setIe_filial("0001");
-    	img.setIe_tipoimg("JPG");
-    	img.setIe_serie("1");
-    	img.setIe_fornece(f.getCl_codigo());
-    	img.setIe_numero(f.getCl_codigo());
-    	System.out.println(f.getCl_codigo());
+    	img.setFi_codigo(f.getCl_codigo());
+    	img.setFi_rg(f.getCl_rg());
+//    	System.out.println(f.getCl_codigo());
     	Path path = Paths.get("D:"+File.separator+"img_filiado"+File.separator+"imagem"+File.separator+session.getId()+".jpg");
     	try {
-			img.setIe_imagem(Files.readAllBytes(path));
+			img.setFi_foto(Files.readAllBytes(path));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -242,15 +235,12 @@ public class CadastraFiliadoMB implements Serializable{
     
     public void insereImagem2(String s){
     	Imagem img = new Imagem();
-    	img.setIe_empresa("0001");
-    	img.setIe_filial("0001");
-    	img.setIe_tipoimg("JPG");
-    	img.setIe_serie("1");
-    	img.setIe_fornece(s);
-    	img.setIe_numero(s);
+    	img.setFi_codigo(f.getCl_codigo());
+    	img.setFi_rg(f.getCl_rg());
+//    	System.out.println(f.getCl_codigo());
     	Path path = Paths.get("D:"+File.separator+"img_filiado"+File.separator+"imagem"+File.separator+session.getId()+".jpg");
     	try {
-			img.setIe_imagem(Files.readAllBytes(path));
+			img.setFi_foto(Files.readAllBytes(path));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

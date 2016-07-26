@@ -2,10 +2,14 @@ package dao;
 
 import java.util.List;
 
+import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
+import model.Cliente;
 import model.Filiado;
 
 /**
@@ -34,6 +38,11 @@ public class FiliadoDaoImpl implements FiliadoDao{
 	 
 	        return entityManager;
 	    }
+		//RECUPERA OBJETO GRAVADO NA SESSÃO
+		HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+		HttpSession session = (HttpSession) request.getSession();
+		
+		Cliente c2 = (Cliente) session.getAttribute("CNPJ_EMPRESA");
 		
 	public void inserir(Filiado f) {
 		
@@ -42,11 +51,10 @@ public class FiliadoDaoImpl implements FiliadoDao{
 			int codigo = Integer.parseInt(f2)+1;
 			System.out.println(codigo);
 			f.setCl_codigo(Integer.toString(codigo));
-		//	f.setCl_codigo("1400");
 			entityManager.getTransaction().begin();
             entityManager.persist(f);
             entityManager.getTransaction().commit();
-            System.out.println("CADASTROU");
+            System.out.println("["+c2.getCl_razao()+"]\tCADASTROU\t["+f.getCl_razao()+"]");
         } catch (Exception ex) {
             ex.printStackTrace();
             entityManager.getTransaction().rollback();
@@ -60,8 +68,7 @@ public String alterar(Filiado f) {
 			entityManager.getTransaction().begin();
             entityManager.merge(f);
             entityManager.getTransaction().commit();
-            System.out.println(f.getCl_codigo());
-            System.out.println("ALTEROU");
+            System.out.println("["+c2.getCl_razao()+"]\tALTEROU\t["+f.getCl_razao()+"]");
             
             return f.getCl_codigo();
         } catch (Exception ex) {

@@ -3,10 +3,14 @@ package model;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import javax.imageio.ImageIO;
 
 import aditional.RodarImagem;
+import dao.ImagemDaoImpl;
 
 /**
 * O webCadastro é um programa que cadastra funcionários
@@ -37,19 +41,19 @@ public class Valores {
 //		}
 //    	ImagemDaoImpl idi = new ImagemDaoImpl();
 //    	idi.gravarImagem(img);
-		File img = new File("D:"+File.separator+"img_filiado"+File.separator+"imagem"+File.separator+"12790426"+ ".jpg");
-		RodarImagem ri = new RodarImagem();
-		BufferedImage bi = new BufferedImage(320, 240, BufferedImage.TYPE_INT_ARGB);
-		try {
-			bi = ImageIO.read(img);
+		Imagem img = new Imagem();
+    	img.setFi_codigo("1718");
+    	img.setFi_rg("6238698");
+    	Path path = Paths.get("D:"+File.separator+"img_filiado"+File.separator+"imagem"+File.separator+"53EFBFB73766D84D47E5783B666608C8"+".jpg");
+    	try {
+			img.setFi_foto(Files.readAllBytes(path));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-		ri.rotateImage(bi, 90.0);
+    	ImagemDaoImpl idi = new ImagemDaoImpl();
+    	idi.gravarImagem(img);
+    }
 		
 		
 	
 	}
-
-}

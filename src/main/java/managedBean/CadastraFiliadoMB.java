@@ -78,10 +78,10 @@ public class CadastraFiliadoMB implements Serializable{
 			addMessage("CPF/CNPJ do Funcionário Inválido");
 			System.out.println("CPF/CNPJ do Funcionário Inválido");
 		}
-		else if (fdi.getQtdFiliado(f.getCl_cnpj())>0){
+		else if (fdi.getQtdFiliado(f.getCl_cnpj(), f.getCl_cnpjcli())>0){
 			FacesContext.getCurrentInstance().getExternalContext().redirect("/webCadastro/restrito/FuncAtencao.jsf");
 			
-			System.out.println("Funcionário já foi cadastrado.");
+			System.out.println("["+c2.getCl_razao()+"]\t\tFUNCIONÁRIO\t\t["+f.getCl_razao()+"]\t\tJÁ FOI CADASTRADO");
 			
 		}
 		else if(filename.equals(null)){

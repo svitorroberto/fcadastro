@@ -59,14 +59,14 @@ public class LoginMB implements Serializable{
             FacesContext.getCurrentInstance().getExternalContext().redirect("/webCadastro/restrito/AlterarSenha.jsf");
         	return "/restrito/AlterarSenha.jsf?faces-redirect=true";
         } else if(c.getCl_cnpj().equals("00000000000000")){
-        	System.out.println("Login MASTER OK\t["+c.getCl_codigo()+"]\t["+c.getCl_razao()+"]\t["+session.getId()+"]");
+        	System.out.println("Login MASTER OK\t\t["+c.getCl_codigo()+"]\t\t["+c.getCl_razao()+"]\t\t["+session.getId()+"]");
         	setLoggedIn(true);
             setClienteLogado(c);
             FacesContext.getCurrentInstance().getExternalContext().redirect("/webCadastro/restrito/admin/RestaurarSenha.jsf");
             return "/restrito/admin/RestaurarSenha.jsf?faces-redirect=true";
         }
         else {
-        	System.out.println("Login OK\t["+c.getCl_codigo()+"]\t["+c.getCl_razao()+"]\t["+session.getId()+"]");
+        	System.out.println("Login OK\t\t["+c.getCl_codigo()+"]\t\t["+c.getCl_razao()+"]\t\t["+session.getId()+"]");
         	setLoggedIn(true);
             setClienteLogado(c);
             FacesContext.getCurrentInstance().getExternalContext().redirect("/webCadastro/restrito/Cadastro.jsf");
@@ -86,7 +86,7 @@ public class LoginMB implements Serializable{
 	         setLoggedIn(false);
 	         session.setAttribute("CNPJ_EMPRESA", null);
 	         session.invalidate();
-	         System.out.println("Logout OK\t["+c.getCl_codigo()+"]\t["+c.getCl_razao()+"]");
+	         System.out.println("Logout OK\t\t["+c.getCl_codigo()+"]\t\t["+c.getCl_razao()+"]");
 	         FacesContext.getCurrentInstance().getExternalContext().redirect("/webCadastro/Login.jsf");
 	   //    addInfoMessage("Logout realizado com sucesso !");
 	         return "/Login.jsf?faces-redirect=true";

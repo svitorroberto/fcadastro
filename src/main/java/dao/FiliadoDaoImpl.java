@@ -49,12 +49,12 @@ public class FiliadoDaoImpl implements FiliadoDao{
 		try {
 			String f2 = String.valueOf(entityManager.createQuery("select max(cl_codigo) from Filiado").getSingleResult());
 			int codigo = Integer.parseInt(f2)+1;
-			System.out.println(codigo);
+//			System.out.println(codigo);
 			f.setCl_codigo(Integer.toString(codigo));
 			entityManager.getTransaction().begin();
             entityManager.persist(f);
             entityManager.getTransaction().commit();
-            System.out.println("["+c2.getCl_razao()+"]\tCADASTROU\t["+f.getCl_razao()+"]");
+            System.out.println("["+c2.getCl_razao()+"]\t\tCADASTROU\t\t["+f.getCl_razao()+"]");
         } catch (Exception ex) {
             ex.printStackTrace();
             entityManager.getTransaction().rollback();
@@ -68,7 +68,7 @@ public String alterar(Filiado f) {
 			entityManager.getTransaction().begin();
             entityManager.merge(f);
             entityManager.getTransaction().commit();
-            System.out.println("["+c2.getCl_razao()+"]\tALTEROU\t["+f.getCl_razao()+"]");
+            System.out.println("["+c2.getCl_razao()+"]\t\tALTEROU\t\t["+f.getCl_razao()+"]");
             
             return f.getCl_codigo();
         } catch (Exception ex) {
@@ -100,9 +100,9 @@ public String alterar(Filiado f) {
 		
 	}
 	
-	public int getQtdFiliado(String cnpj){
+	public int getQtdFiliado(String cnpj, String emp){
 		try {
-			List<Filiado> f = (List<Filiado>) entityManager.createQuery("SELECT f from Filiado f where f.cl_cnpj = :cl_cnpj").setParameter("cl_cnpj", cnpj).getResultList();
+			List<Filiado> f = (List<Filiado>) entityManager.createQuery("SELECT f from Filiado f where f.cl_cnpj = :cl_cnpj and f.cl_cnpjcli = :cl_cnpjcli").setParameter("cl_cnpj", cnpj).setParameter("cl_cnpjcli", emp).getResultList();
 			return f.size(); 
 		
 		}catch(Exception ex){

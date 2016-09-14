@@ -1,5 +1,8 @@
 package dao;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.faces.context.FacesContext;
@@ -49,12 +52,11 @@ public class FiliadoDaoImpl implements FiliadoDao{
 		try {
 			String f2 = String.valueOf(entityManager.createQuery("select max(cl_codigo) from Filiado").getSingleResult());
 			int codigo = Integer.parseInt(f2)+1;
-//			System.out.println(codigo);
+//			entityManager.lock(f2, LockModeType.WRITE);
 			f.setCl_codigo(Integer.toString(codigo));
 			entityManager.getTransaction().begin();
             entityManager.persist(f);
             entityManager.getTransaction().commit();
-            System.out.println("["+c2.getCl_razao()+"]\t\tCADASTROU\t\t["+f.getCl_razao()+"]");
         } catch (Exception ex) {
             ex.printStackTrace();
             entityManager.getTransaction().rollback();
@@ -68,7 +70,6 @@ public String alterar(Filiado f) {
 			entityManager.getTransaction().begin();
             entityManager.merge(f);
             entityManager.getTransaction().commit();
-            System.out.println("["+c2.getCl_razao()+"]\t\tALTEROU\t\t["+f.getCl_razao()+"]");
             
             return f.getCl_codigo();
         } catch (Exception ex) {
@@ -112,16 +113,6 @@ public String alterar(Filiado f) {
 		
 	}
 	
-	public static void main(String[] args){
-		Filiado f = new Filiado();
-		FiliadoDaoImpl fd = new FiliadoDaoImpl();
-		f.setCl_razao("TESTANDO123 DA SILVA");
-		f.setCl_cnpj("99999999999");
-		f.setCl_cidade("1");
-		f.setCl_estado("1");
-		f.setCl_pais("1");
-		f.setCl_cnpjcli("99999999999999");
-		fd.inserir(f);
-	}
-
+	
+	
 }

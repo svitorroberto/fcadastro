@@ -37,7 +37,8 @@ http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
 		<property name="hibernate.connection.url" value="jdbc:oracle:thin:@10.27.0.250:1521:dadoundg"/>
 		<property name="connection_pool_size" value="1"/>
 		<property name="hbm2ddl.auto" value="update"/>
-		<property name="show_sql" value="true"/>         
+		<property name="show_sql" value="true"/>  
+		<property name="c3p0.timeout" value="100"></property>       
 	</properties>
 	</persistence-unit>
 </persistence>

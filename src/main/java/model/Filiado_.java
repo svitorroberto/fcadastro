@@ -4,7 +4,7 @@ import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="Dali", date="2016-07-12T11:08:36.740-0300")
+@Generated(value="Dali", date="2016-09-14T09:14:31.988-0300")
 @StaticMetamodel(Filiado.class)
 public class Filiado_ {
 	public static volatile SingularAttribute<Filiado, String> cl_codigo;
@@ -32,4 +32,6 @@ public class Filiado_ {
 	public static volatile SingularAttribute<Filiado, String> cl_codgru;
 	public static volatile SingularAttribute<Filiado, String> cl_dtadmissao;
 	public static volatile SingularAttribute<Filiado, String> cl_cargo;
+	public static volatile SingularAttribute<Filiado, String> cl_cadastro;
+	public static volatile SingularAttribute<Filiado, String> estacao;
 }

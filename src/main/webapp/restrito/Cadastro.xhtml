@@ -179,10 +179,11 @@
         <p:dialog header="Tirar Foto" widgetVar="dlg2" modal="true" height="100">
     		<h:outputText value="Foto gravada com sucesso!" />
 		</p:dialog>
+		<p:outputLabel value="*Tirar foto é obrigatório, caso contrário resultará em erro." />
  
           
-          
-          
+        <p:outputLabel id="lki" value="" />  
+        <p:outputLabel id="lkp" value="" />  
 		<p:outputLabel id="lkj" value="" />
         <p:commandButton value="Cadastrar" actionListener="#{cadastraFiliado.criarFiliado}" ajax="false" />
         

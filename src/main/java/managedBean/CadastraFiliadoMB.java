@@ -6,6 +6,9 @@ import java.io.Serializable;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.faces.FacesException;
@@ -62,7 +65,7 @@ public class CadastraFiliadoMB implements Serializable{
 	HttpSession session = (HttpSession) request.getSession();
 	
 	public CadastraFiliadoMB(){
-//		System.out.println("CONSTRUTOR");
+
 		f = new Filiado();
 		c2 = (Cliente) session.getAttribute("CNPJ_EMPRESA");	
 		f.setCl_cnpjcli(c2.getCl_cnpj());
@@ -72,23 +75,19 @@ public class CadastraFiliadoMB implements Serializable{
 	public String criarFiliado() throws IOException{
 		CNP cnp = new CNP();
 		FiliadoDaoImpl fdi = new FiliadoDaoImpl();
-//		System.out.println("CNPJ"+f.getCl_cnpjcli());
-//		System.out.println("NOME"+f.getCl_cliente());
 		if(cnp.tomarDecisao(f.getCl_cnpj())== false){
 			addMessage("CPF/CNPJ do Funcionário Inválido");
-			System.out.println("CPF/CNPJ do Funcionário Inválido");
 		}
 		else if (fdi.getQtdFiliado(f.getCl_cnpj(), f.getCl_cnpjcli())>0){
 			FacesContext.getCurrentInstance().getExternalContext().redirect("/webCadastro/restrito/FuncAtencao.jsf");
 			
-			System.out.println("["+c2.getCl_razao()+"]\t\tFUNCIONÁRIO\t\t["+f.getCl_razao()+"]\t\tJÁ FOI CADASTRADO");
-			
 		}
-		else if(filename.equals(null)){
-			addMessage("Erro! tirar foto do funcionário");
+		else if(filename == null){
+			addErrMessage("Erro! É necessário tirar foto do funcionário");
 		}
 		else{
 			transformaCodigos();
+			f.setCl_cadastro(getData());
 			new FiliadoDaoImpl().inserir(f);
 			insereImagem();
 			addMessage("Sucesso! Funcionário Cadastrado!");
@@ -105,14 +104,14 @@ public class CadastraFiliadoMB implements Serializable{
 	public String alterarFiliado() throws IOException{
 		CNP cnp = new CNP();
 		if(cnp.tomarDecisao(f.getCl_cnpj())== false){
-			addMessage("CPF/CNPJ do Funcionário Inválido");
-			System.out.println("CPF/CNPJ do Funcionário Inválido");
+			addErrMessage("CPF/CNPJ do Funcionário Inválido");
 		}
-		else if(filename.equals(null)){
-			addMessage("Erro! tirar foto do funcionário");
+		else if(filename == null){
+			addErrMessage("Erro! É necessário tirar foto do funcionário");addErrMessage("Erro! tirar foto do funcionário");
 		}
 		else{
 			transformaCodigos();
+			f.setCl_cadastro(getData());
 			String s = new FiliadoDaoImpl().alterar(f);
 			insereImagem2(s);
 			addMessage("Sucesso! Funcionário Alterado!");
@@ -121,7 +120,6 @@ public class CadastraFiliadoMB implements Serializable{
 			c2 = (Cliente) session.getAttribute("CNPJ_EMPRESA");	
 			f.setCl_cnpjcli(c2.getCl_cnpj());
 			f.setCl_cliente(c2.getCl_razao());
-//			System.out.println("NÃO ERRO");
 			FacesContext.getCurrentInstance().getExternalContext().redirect("/webCadastro/restrito/FuncAlterado.jsf");
 			
 		}
@@ -133,15 +131,17 @@ public class CadastraFiliadoMB implements Serializable{
 	public String procuraCep() throws IOException{
 		CepDaoImpl cdi = new CepDaoImpl();
 		Cep cep = cdi.getCep(f.getCl_cep());
-		if(cep.equals(null)){
-			FacesContext.getCurrentInstance().getExternalContext().redirect("/webCadastro/restrito/FuncAlterado.jsf");
-			addMessage("Erro! CEP não encontrado");
+		if(cep == null){
+			FacesContext.getCurrentInstance().getExternalContext().redirect("/webCadastro/restrito/ErrorCep.jsf");
+			addErrMessage("Erro! CEP não encontrado");
 		}
 		else{
 			
 		f.setCl_cep(cep.getCep());
-		f.setCl_enderec(cep.getDesc02());
-		f.setCl_bairro(cep.getBai());
+		if(!(cep.getDesc02()==null))
+			f.setCl_enderec(cep.getDesc02());
+		if(!(cep.getBai()==null))
+			f.setCl_bairro(cep.getBai());
 		f.setCl_complem(cep.getCompl());
 		f.setCl_cidade(cep.getCid());
 		f.setCl_estado(cep.getUf());
@@ -187,6 +187,10 @@ public class CadastraFiliadoMB implements Serializable{
         FacesContext.getCurrentInstance().addMessage(null, message);
     }
 
+	public void addErrMessage(String summary) {
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, summary,  null);
+        FacesContext.getCurrentInstance().addMessage(null, message);
+    }
 	//GRAVA IMAGEM NO DIRETÓRIO
 	private String getRandomImageName() {
             
@@ -208,8 +212,6 @@ public class CadastraFiliadoMB implements Serializable{
         try {
             imageOutput = new FileImageOutputStream(new File(newFileName));
             imageOutput.write(data, 0, data.length);
-//            imageOutput = new FileImageOutputStream(new File("./fotos//"+filename+ ".jpg"));
-//            imageOutput.write(data, 0, data.length);
             imageOutput.close();
         }
         catch(IOException e) {
@@ -221,7 +223,6 @@ public class CadastraFiliadoMB implements Serializable{
     	Imagem img = new Imagem();
     	img.setFi_codigo(f.getCl_codigo());
     	img.setFi_rg(f.getCl_rg());
-//    	System.out.println(f.getCl_codigo());
     	Path path = Paths.get("D:"+File.separator+"img_filiado"+File.separator+"imagem"+File.separator+session.getId()+".jpg");
     	try {
 			img.setFi_foto(Files.readAllBytes(path));
@@ -237,7 +238,6 @@ public class CadastraFiliadoMB implements Serializable{
     	Imagem img = new Imagem();
     	img.setFi_codigo(f.getCl_codigo());
     	img.setFi_rg(f.getCl_rg());
-//    	System.out.println(f.getCl_codigo());
     	Path path = Paths.get("D:"+File.separator+"img_filiado"+File.separator+"imagem"+File.separator+session.getId()+".jpg");
     	try {
 			img.setFi_foto(Files.readAllBytes(path));
@@ -248,6 +248,12 @@ public class CadastraFiliadoMB implements Serializable{
     	idi.gravarImagem(img);
     }
     //FIM GRAVA IMAGEM
+    
+    public String getData(){
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		Date date = new Date();
+		return dateFormat.format(date);
+	}
     
 	
 	public Filiado getF() {

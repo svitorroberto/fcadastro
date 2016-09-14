@@ -1,0 +1,59 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:p="http://primefaces.org/ui">
+   
+  <h:head>
+  	<title>Funcionário por Empresa</title>
+  
+   <link rel="icon" type="image/png" href="../../images/favicon2.png"/>
+	<link rel="StyleSheet" type="text/css" href="../../css/style.css" media="screen" />
+	
+  </h:head>
+   
+  <h:body>
+  <div id="logo">
+<img src="../../images/logo.jpg" alt="CEASA-GO" height="142" width="420"/>
+</div>
+  <div id="todo2">
+  <h1>Restaurar Senha</h1>
+        <h:form>
+        <p:messages autoUpdate="true" />
+	             
+
+    <p:dataTable var="car" value="#{ListaFunc.func}" rows="20"
+                         paginator="true"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="5,10,15">
+        <p:column headerText="CNPJ">
+            <h:outputText value="#{car.cl_cnpj}" />
+        </p:column>
+ 
+        <p:column headerText="Quantidade">
+            <h:outputText value="#{car.qot_func}" />
+        </p:column>
+    </p:dataTable>
+
+        </h:form>
+<h:form id="form2">
+<p:commandLink id="link2" actionListener="#{loginMB.doLogout}">
+        <h:outputText value="Sair" />
+    </p:commandLink>
+</h:form>
+<p:confirmDialog widgetVar="localizar" global="true" showEffect="fade" hideEffect="fade">
+            <p:outputLabel value="#{restaurarSenha.c.cl_razao}" />
+       		<p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
+        	<p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+</p:confirmDialog> 
+
+   </div>
+    <div id="rodape">
+			<div id="texto">
+				<h5>
+					Cadastro de Funcionários online versão 1.0<br />
+					Copyright © 2016 <a href="http://www.linkedin.com/in/SVitorRoberto">SV-Software Ltda.</a> Todos os direitos reservados.
+				</h5>
+			</div>
+		</div>
+  </h:body>
+  </html>

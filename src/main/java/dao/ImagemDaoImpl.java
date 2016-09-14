@@ -41,7 +41,6 @@ public class ImagemDaoImpl implements ImagemDao{
 			entityManager.getTransaction().begin();
             entityManager.persist(img);
             entityManager.getTransaction().commit();
-            System.out.println("CADASTROU IMAGEM");
         } catch (Exception ex) {
             ex.printStackTrace();
             entityManager.getTransaction().rollback();

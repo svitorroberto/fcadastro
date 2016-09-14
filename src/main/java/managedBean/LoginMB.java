@@ -2,7 +2,6 @@ package managedBean;
 
 import java.io.IOException;
 import java.io.Serializable;
-import java.util.Date;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -43,37 +42,36 @@ public class LoginMB implements Serializable{
 	
 	public String doLogin() throws IOException {
         //PESQUISA SE HÁ ALGUM OBJETO COM A COMBINAÇÃO CNPJ+SENHA
-		c = clienteDao.getUsuario(c.getCl_cnpj(), c.getCl_senha());
-		session.setAttribute("CNPJ_EMPRESA", c);
+		try{
+			c = clienteDao.getUsuario(c.getCl_cnpj(), c.getCl_senha());
+			session.setAttribute("CNPJ_EMPRESA", c);
 		
-        if (c == null) {
-              c = new Cliente();
-              FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Empresa não encontrada ou senha incorreta","Erro no Login!"));
-              FacesContext.getCurrentInstance().validationFailed();
-              System.out.println("Empresa não encontrada");
-              return "/Login.jsf?faces-redirect=true";
-        } else if(c.getCl_senha()==null){
-        	System.out.println("Senha não cadastrada");
+		
+        
+        if(c.getCl_senha()==null){
         	setLoggedIn(true);
             setClienteLogado(c);
             FacesContext.getCurrentInstance().getExternalContext().redirect("/webCadastro/restrito/AlterarSenha.jsf");
         	return "/restrito/AlterarSenha.jsf?faces-redirect=true";
         } else if(c.getCl_cnpj().equals("00000000000000")){
-        	System.out.println("Login MASTER OK\t\t["+c.getCl_codigo()+"]\t\t["+c.getCl_razao()+"]\t\t["+session.getId()+"]");
         	setLoggedIn(true);
             setClienteLogado(c);
             FacesContext.getCurrentInstance().getExternalContext().redirect("/webCadastro/restrito/admin/RestaurarSenha.jsf");
             return "/restrito/admin/RestaurarSenha.jsf?faces-redirect=true";
         }
         else {
-        	System.out.println("Login OK\t\t["+c.getCl_codigo()+"]\t\t["+c.getCl_razao()+"]\t\t["+session.getId()+"]");
         	setLoggedIn(true);
             setClienteLogado(c);
             FacesContext.getCurrentInstance().getExternalContext().redirect("/webCadastro/restrito/Cadastro.jsf");
             return "/restrito/Cadastro.jsf?faces-redirect=true";
         }
         
-        
+		}
+		catch(NullPointerException e){
+			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Empresa não encontrada ou senha incorreta","Erro no Login!"));
+			 return "Error";
+		}
+		
   }
 
 	
@@ -86,7 +84,6 @@ public class LoginMB implements Serializable{
 	         setLoggedIn(false);
 	         session.setAttribute("CNPJ_EMPRESA", null);
 	         session.invalidate();
-	         System.out.println("Logout OK\t\t["+c.getCl_codigo()+"]\t\t["+c.getCl_razao()+"]");
 	         FacesContext.getCurrentInstance().getExternalContext().redirect("/webCadastro/Login.jsf");
 	   //    addInfoMessage("Logout realizado com sucesso !");
 	         return "/Login.jsf?faces-redirect=true";

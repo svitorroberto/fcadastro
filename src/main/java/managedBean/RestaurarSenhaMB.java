@@ -37,10 +37,7 @@ public String zerar() throws IOException, InterruptedException{
 			c.setCl_senha("");
 			new ClienteDaoImpl().alterar(c);
 			addMessage("Senha restaurada com sucesso!");
-			System.out.println("RESTAUROU");
 			c = new Cliente();
-//			Thread.sleep(2000);
-//			FacesContext.getCurrentInstance().getExternalContext().redirect("/webCadastro/restrito/Cadastro.jsf");
 		return "zerou senha";
 		}
 	}

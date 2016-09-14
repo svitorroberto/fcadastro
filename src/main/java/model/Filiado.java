@@ -46,18 +46,27 @@ public class Filiado implements Serializable{
 	private String cl_codgru;
 	private String cl_dtadmissao;
 	private String cl_cargo;
+	private String estacao = "WEBCADASTRO";
+	private String cl_cadastro;
 	
-//	private String cl_carteira;
-
-
-	public String getCl_codigo() {
-		return cl_codigo;
+	
+	public String getEstacao() {
+		return estacao;
+	}
+	public String getCl_cadastro() {
+		return cl_cadastro;
+	}
+	public void setCl_cadastro(String cl_cadastro) {
+		this.cl_cadastro = cl_cadastro;
 	}
 	public String getCl_sexo() {
 		return cl_sexo;
 	}
 	public void setCl_sexo(String cl_sexo) {
 		this.cl_sexo = cl_sexo;
+	}
+	public String getCl_codigo() {
+		return cl_codigo;
 	}
 	public void setCl_codigo(String cl_codigo) {
 		this.cl_codigo = cl_codigo;

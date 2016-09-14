@@ -4,11 +4,9 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.NoResultException;
-import javax.persistence.NonUniqueResultException;
 import javax.persistence.Persistence;
 
-import model.Cep;
+import model.Func;
 
 /**
 * O webCadastro é um programa que cadastra funcionários
@@ -19,12 +17,12 @@ import model.Cep;
 * @since   01/07/2016 
 * 
 */
-public class CepDaoImpl implements CepDao{
+public class FuncDaoImpl implements FuncDao{
 
 	//Com entityManager	
 			protected EntityManager entityManager;
 			 
-		    public CepDaoImpl() {
+		    public FuncDaoImpl() {
 		        entityManager = getEntityManager();
 		    }
 			
@@ -37,16 +35,16 @@ public class CepDaoImpl implements CepDao{
 		        return entityManager;
 		    }
 			
-	public Cep getCep(String cep) {
-			Cep c = new Cep();
+			
+	public List<Func> listarFunc() {
 		try {
-			c = (Cep) entityManager.createQuery("SELECT c from Cep c where c.cep = :cep").setParameter("cep", cep).getSingleResult();
-			return c;
-        } catch (NoResultException e) {
-            e.printStackTrace();
-        }catch (NonUniqueResultException n){
-        	List<Cep> ceps = entityManager.createQuery("SELECT c from Cep c where c.cep = :cep").setParameter("cep", cep).getResultList();
-        }
+			@SuppressWarnings("unchecked")
+			List<Func> fs = (List<Func>) entityManager.createNativeQuery("select cl_cnpjcli, COUNT(*) as qot_func from tfiliado group by cl_cnpjcli order by qot_func desc").getResultList();
+			return fs;
+			
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}
 		return null;
 	}
 

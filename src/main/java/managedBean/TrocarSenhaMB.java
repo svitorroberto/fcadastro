@@ -52,7 +52,6 @@ public class TrocarSenhaMB {
 	} else {
 	 	c.setCl_senha(c2.getSenha());
 		new ClienteDaoImpl().alterar(c);
-		System.out.println("Gravou senha alterada");
 		c = new Cliente();
 		c2 = new Cliente2();		
 		addMessage("Senha gravada com sucesso!");
